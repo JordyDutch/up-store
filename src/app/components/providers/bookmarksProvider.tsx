@@ -124,7 +124,6 @@ export function BookmarksProvider({ children }: { children: ReactNode }) {
     client: upClient,
     chainId,
     isMiniApp,
-    hasExtension,
     connect,
   } = useUpProvider();
 
@@ -311,7 +310,8 @@ export function BookmarksProvider({ children }: { children: ReactNode }) {
     if (Object.keys(pending).length === 0) return;
 
     if (!accounts[0] || !upClient) {
-      if (!isMiniApp && hasExtension) {
+      if (!isMiniApp) {
+        // Standalone: open the UP-Modal sign-in dialog (extension + mobile + EOA).
         void connect();
         return;
       }
@@ -403,7 +403,6 @@ export function BookmarksProvider({ children }: { children: ReactNode }) {
     upClient,
     chainId,
     isMiniApp,
-    hasExtension,
     connect,
     readOnChain,
   ]);

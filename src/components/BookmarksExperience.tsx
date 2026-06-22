@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   AppWindow,
   Bookmark as BookmarkIcon,
   Compass,
+  LayoutGrid,
   Link as LinkIcon,
+  List,
   Plus,
   Search,
   User,
@@ -24,6 +26,11 @@ import { Button } from "@/components/ui/button";
 import { useBookmarks } from "@/app/components/providers/bookmarksProvider";
 import { useUpProvider } from "@/app/components/providers/upProvider";
 import { type Bookmark, faviconUrl } from "@/lib/bookmarks";
+import { cn } from "@/lib/utils";
+
+type BookmarkView = "list" | "grid";
+
+const VIEW_STORAGE_KEY = "upstore:bookmarks-view";
 
 export default function BookmarksExperience() {
   const { bookmarks, isLoading, error, removeBookmark } = useBookmarks();
@@ -31,16 +38,50 @@ export default function BookmarksExperience() {
   const reduceMotion = useReducedMotion();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const apps = bookmarks.filter((b) => b.type === "app");
-  const profiles = bookmarks.filter((b) => b.type === "profile");
-  const links = bookmarks.filter((b) => b.type === "link");
+  const [searchTerm, setSearchTerm] = useState("");
+  const deferredSearch = useDeferredValue(searchTerm);
+  const query = deferredSearch.trim().toLowerCase();
+
+  const [view, setView] = useState<BookmarkView>("list");
+  // Restore the saved view after mount — localStorage is client-only, so reading
+  // it in the initializer would desync SSR / the first client render.
+  useEffect(() => {
+    const saved = window.localStorage.getItem(VIEW_STORAGE_KEY);
+    if (saved === "grid" || saved === "list") setView(saved);
+  }, []);
+  const changeView = (next: BookmarkView) => {
+    setView(next);
+    try {
+      window.localStorage.setItem(VIEW_STORAGE_KEY, next);
+    } catch {
+      /* ignore storage failures (private mode / quota) */
+    }
+  };
+
+  // Filter by title, URL, or (for profiles) address — case-insensitive.
+  const filtered = useMemo(() => {
+    if (!query) return bookmarks;
+    return bookmarks.filter(
+      (b) =>
+        b.title.toLowerCase().includes(query) ||
+        b.url.toLowerCase().includes(query) ||
+        (b.address?.toLowerCase().includes(query) ?? false)
+    );
+  }, [bookmarks, query]);
+
+  const apps = filtered.filter((b) => b.type === "app");
+  const profiles = filtered.filter((b) => b.type === "profile");
+  const links = filtered.filter((b) => b.type === "link");
+
+  const hasBookmarks = bookmarks.length > 0;
+  const noMatches = hasBookmarks && filtered.length === 0;
 
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <BookmarksNavbar />
 
       <div className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-8 md:px-6 md:py-12">
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-6 flex items-center justify-between gap-4">
           <div>
             <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
               Bookmarks
@@ -61,6 +102,40 @@ export default function BookmarksExperience() {
             </Button>
           )}
         </div>
+
+        {/* Search + view toggle — only meaningful once there are bookmarks. */}
+        {walletConnected && !isLoading && !error && hasBookmarks && (
+          <div className="mb-6 flex items-center gap-2 sm:gap-3">
+            <div className="relative min-w-0 flex-1">
+              <Search
+                aria-hidden="true"
+                className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-text-tertiary"
+              />
+              <input
+                type="search"
+                inputMode="search"
+                placeholder="Search bookmarks"
+                autoComplete="off"
+                aria-label="Search bookmarks"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                className="h-11 w-full rounded-full border border-border-strong bg-card pl-10 pr-11 text-[16px] text-foreground shadow-rest outline-none placeholder:text-text-tertiary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:text-[15px]"
+              />
+              {searchTerm ? (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-text-secondary transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              ) : null}
+            </div>
+
+            <ViewToggle view={view} onChange={changeView} />
+          </div>
+        )}
 
         {/* Not connected */}
         {!walletConnected && (
@@ -101,7 +176,7 @@ export default function BookmarksExperience() {
         )}
 
         {/* Empty */}
-        {walletConnected && !isLoading && !error && bookmarks.length === 0 && (
+        {walletConnected && !isLoading && !error && !hasBookmarks && (
           <div className="glass flex flex-col items-center gap-4 rounded-xl px-6 py-16 text-center">
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-text-secondary">
               <BookmarkIcon className="h-7 w-7" />
@@ -118,24 +193,42 @@ export default function BookmarksExperience() {
           </div>
         )}
 
+        {/* No search matches */}
+        {walletConnected && !isLoading && !error && noMatches && (
+          <div className="glass flex flex-col items-center gap-4 rounded-xl px-6 py-16 text-center">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-text-secondary">
+              <Search className="h-7 w-7" />
+            </span>
+            <p className="max-w-[40ch] text-sm text-text-secondary">
+              No bookmarks match “{searchTerm.trim()}”.
+            </p>
+            <Button onClick={() => setSearchTerm("")} variant="outline" size="pill">
+              Clear search
+            </Button>
+          </div>
+        )}
+
         {/* Loaded */}
-        {walletConnected && !isLoading && !error && bookmarks.length > 0 && (
+        {walletConnected && !isLoading && !error && hasBookmarks && !noMatches && (
           <div className="space-y-10">
             <BookmarkGroup
               title="Apps"
               items={apps}
+              view={view}
               onRemove={removeBookmark}
               reduceMotion={reduceMotion ?? false}
             />
             <BookmarkGroup
               title="Profiles"
               items={profiles}
+              view={view}
               onRemove={removeBookmark}
               reduceMotion={reduceMotion ?? false}
             />
             <BookmarkGroup
               title="Links"
               items={links}
+              view={view}
               onRemove={removeBookmark}
               reduceMotion={reduceMotion ?? false}
             />
@@ -202,14 +295,76 @@ function BookmarksNavbar() {
   );
 }
 
+function ViewToggle({
+  view,
+  onChange,
+}: {
+  view: BookmarkView;
+  onChange: (next: BookmarkView) => void;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label="Bookmark layout"
+      className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-border-strong bg-card p-0.5 shadow-rest"
+    >
+      <ViewToggleButton
+        active={view === "list"}
+        label="List view"
+        onClick={() => onChange("list")}
+      >
+        <List className="h-4 w-4" aria-hidden="true" />
+      </ViewToggleButton>
+      <ViewToggleButton
+        active={view === "grid"}
+        label="Grid view"
+        onClick={() => onChange("grid")}
+      >
+        <LayoutGrid className="h-4 w-4" aria-hidden="true" />
+      </ViewToggleButton>
+    </div>
+  );
+}
+
+function ViewToggleButton({
+  active,
+  label,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  label: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      aria-label={label}
+      onClick={onClick}
+      className={cn(
+        "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        active
+          ? "bg-brand text-primary-foreground shadow-sm dark:text-background"
+          : "text-text-secondary hover:bg-muted hover:text-foreground"
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
 function BookmarkGroup({
   title,
   items,
+  view,
   onRemove,
   reduceMotion,
 }: {
   title: string;
   items: Bookmark[];
+  view: BookmarkView;
   onRemove: (id: string) => Promise<void>;
   reduceMotion: boolean;
 }) {
@@ -220,7 +375,13 @@ function BookmarkGroup({
       <h2 className="mb-3 text-[11px] font-medium uppercase tracking-[0.08em] text-text-tertiary">
         {title}
       </h2>
-      <ul className="space-y-2">
+      <ul
+        className={
+          view === "grid"
+            ? "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+            : "space-y-2"
+        }
+      >
         {items.map((b, i) => (
           <motion.li
             key={b.id}
@@ -228,12 +389,23 @@ function BookmarkGroup({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.24, delay: reduceMotion ? 0 : i * 0.02 }}
           >
-            <BookmarkRow bookmark={b} onRemove={onRemove} />
+            {view === "grid" ? (
+              <BookmarkCard bookmark={b} onRemove={onRemove} />
+            ) : (
+              <BookmarkRow bookmark={b} onRemove={onRemove} />
+            )}
           </motion.li>
         ))}
       </ul>
     </section>
   );
+}
+
+/** Secondary line: a short address for profiles, otherwise the URL. */
+function bookmarkSecondary(bookmark: Bookmark): string {
+  return bookmark.type === "profile" && bookmark.address
+    ? `${bookmark.address.slice(0, 6)}…${bookmark.address.slice(-4)}`
+    : bookmark.url;
 }
 
 function BookmarkRow({
@@ -243,11 +415,6 @@ function BookmarkRow({
   bookmark: Bookmark;
   onRemove: (id: string) => Promise<void>;
 }) {
-  const secondary =
-    bookmark.type === "profile" && bookmark.address
-      ? `${bookmark.address.slice(0, 6)}…${bookmark.address.slice(-4)}`
-      : bookmark.url;
-
   return (
     <a
       href={bookmark.url}
@@ -261,7 +428,9 @@ function BookmarkRow({
         <p className="truncate text-sm font-medium text-foreground">
           {bookmark.title}
         </p>
-        <p className="truncate text-xs text-text-secondary">{secondary}</p>
+        <p className="truncate text-xs text-text-secondary">
+          {bookmarkSecondary(bookmark)}
+        </p>
       </div>
 
       <button
@@ -280,13 +449,67 @@ function BookmarkRow({
   );
 }
 
-function BookmarkMedia({ bookmark }: { bookmark: Bookmark }) {
+function BookmarkCard({
+  bookmark,
+  onRemove,
+}: {
+  bookmark: Bookmark;
+  onRemove: (id: string) => Promise<void>;
+}) {
+  return (
+    <a
+      href={bookmark.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex h-full flex-col items-center gap-3 rounded-xl border border-border bg-card p-4 text-center shadow-rest transition hover:shadow-hover"
+    >
+      <button
+        type="button"
+        aria-label="Remove bookmark"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          void onRemove(bookmark.id);
+        }}
+        className="absolute right-1.5 top-1.5 inline-flex h-7 w-7 items-center justify-center rounded-full text-text-tertiary transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <X className="h-4 w-4" />
+      </button>
+
+      <BookmarkMedia bookmark={bookmark} size="lg" />
+
+      <div className="w-full min-w-0">
+        <p className="truncate text-sm font-medium text-foreground">
+          {bookmark.title}
+        </p>
+        <p className="truncate text-xs text-text-secondary">
+          {bookmarkSecondary(bookmark)}
+        </p>
+      </div>
+    </a>
+  );
+}
+
+function BookmarkMedia({
+  bookmark,
+  size = "md",
+}: {
+  bookmark: Bookmark;
+  size?: "md" | "lg";
+}) {
+  const box = size === "lg" ? "h-14 w-14" : "h-10 w-10";
+
   if (bookmark.type === "profile") {
     return (
-      <Avatar className="h-10 w-10">
+      <Avatar className={box}>
         {bookmark.icon && <AvatarImage src={bookmark.icon} alt="" />}
         <AvatarFallback>
-          <User className="h-4 w-4 text-text-secondary" />
+          <User
+            className={cn(
+              "text-text-secondary",
+              size === "lg" ? "h-5 w-5" : "h-4 w-4"
+            )}
+          />
         </AvatarFallback>
       </Avatar>
     );
@@ -300,20 +523,32 @@ function BookmarkMedia({ bookmark }: { bookmark: Bookmark }) {
     (bookmark.type === "link" ? faviconUrl(bookmark.url) : undefined);
 
   return (
-    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-muted">
+    <span
+      className={cn(
+        "flex shrink-0 items-center justify-center overflow-hidden bg-muted",
+        box,
+        size === "lg" ? "rounded-xl" : "rounded-lg"
+      )}
+    >
       {icon ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={icon}
           alt=""
-          className={
+          className={cn(
             bookmark.type === "app"
               ? "h-full w-full object-cover"
-              : "h-6 w-6 object-contain"
-          }
+              : "object-contain",
+            bookmark.type !== "app" && (size === "lg" ? "h-8 w-8" : "h-6 w-6")
+          )}
         />
       ) : (
-        <FallbackIcon className="h-4 w-4 text-text-secondary" />
+        <FallbackIcon
+          className={cn(
+            "text-text-secondary",
+            size === "lg" ? "h-5 w-5" : "h-4 w-4"
+          )}
+        />
       )}
     </span>
   );
