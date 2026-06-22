@@ -6,8 +6,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
 import { App, getPrimaryCategory } from "@/data/appCatalog";
-import BookmarkButton from "@/components/BookmarkButton";
-import { buildAppBookmark } from "@/lib/bookmarks";
 
 interface AppSliderProps {
   title: string;
@@ -86,7 +84,7 @@ export default function AppSlider({
             return (
               <motion.li
                 key={app.id ?? `${name}-${index}`}
-                className="relative snap-start"
+                className="snap-start"
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
@@ -138,10 +136,6 @@ export default function AppSlider({
                     ) : null}
                   </div>
                 </motion.button>
-                <BookmarkButton
-                  bookmark={buildAppBookmark(app)}
-                  className="absolute right-4 top-4 z-10 h-8 w-8"
-                />
               </motion.li>
             );
           })}
