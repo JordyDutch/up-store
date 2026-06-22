@@ -9,9 +9,9 @@ interface WordmarkProps {
 
 export function Wordmark({ className, size = "md" }: WordmarkProps) {
   const dimensions = {
-    sm: "h-7 w-[89px]",
-    md: "h-8 w-[102px] md:h-9 md:w-[115px]",
-    lg: "h-14 w-[179px] md:h-16 md:w-[204px]",
+    sm: "h-8 w-8",
+    md: "h-9 w-9 md:h-10 md:w-10",
+    lg: "h-20 w-20 md:h-24 md:w-24",
   }[size];
 
   return (
@@ -22,11 +22,11 @@ export function Wordmark({ className, size = "md" }: WordmarkProps) {
       <Image
         src="/brand/upstore-wordmark.webp"
         alt="UP! Store"
-        width={1155}
-        height={362}
+        width={512}
+        height={512}
         priority
         className="h-full w-full object-contain"
-        sizes={size === "lg" ? "204px" : "115px"}
+        sizes={size === "lg" ? "96px" : "40px"}
       />
     </span>
   );
