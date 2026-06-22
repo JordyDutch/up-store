@@ -11,11 +11,11 @@ import { Wordmark } from "@/components/Wordmark";
  * so it stays a server component and renders at the bottom of the list pages.
  */
 
-const REPO_URL = "https://github.com/JordyDutch/mini-store/";
+const REPO_URL = "https://github.com/JordyDutch/up-store/";
 // Step-by-step guide for adding an app, on the default branch.
-const GUIDE_URL = "https://github.com/JordyDutch/mini-store/blob/master/docs/adding-apps.md";
+const GUIDE_URL = "https://github.com/JordyDutch/up-store/blob/master/docs/adding-apps.md";
 // Lands on the repo's PR list with the "New pull request" button in reach.
-const PR_URL = "https://github.com/JordyDutch/mini-store/pulls";
+const PR_URL = "https://github.com/JordyDutch/up-store/pulls";
 
 export function Footer() {
   return (
@@ -84,7 +84,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="transition-colors hover:text-foreground"
           >
-            github.com/JordyDutch/mini-store
+            github.com/JordyDutch/up-store
           </a>
         </div>
       </div>

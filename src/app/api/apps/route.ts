@@ -18,7 +18,7 @@ export async function GET() {
 
   return NextResponse.json(
     {
-      name: "LUKSO UP!Store",
+      name: "LUKSO UP! Store",
       description:
         "Discover Mini-Apps for your LUKSO Universal Profile. Open any app, or add it to your Universal Profile Grid.",
       website: siteUrl,

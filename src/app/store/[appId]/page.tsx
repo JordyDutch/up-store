@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   if (!app) {
     return {
-      title: "App not found | LUKSO UP!Store",
+      title: "App not found | LUKSO UP! Store",
     };
   }
 
@@ -38,11 +38,11 @@ export async function generateMetadata({
     .join(" - ");
 
   return {
-    title: `${app.app.name} | LUKSO UP!Store`,
-    description: description || "Discover this app on the LUKSO UP!Store.",
+    title: `${app.app.name} | LUKSO UP! Store`,
+    description: description || "Discover this app on the LUKSO UP! Store.",
     openGraph: {
-      title: `${app.app.name} | LUKSO UP!Store`,
-      description: description || "Discover this app on the LUKSO UP!Store.",
+      title: `${app.app.name} | LUKSO UP! Store`,
+      description: description || "Discover this app on the LUKSO UP! Store.",
       images: app.banner ? [app.banner] : app.icon ? [app.icon] : [],
     },
   };

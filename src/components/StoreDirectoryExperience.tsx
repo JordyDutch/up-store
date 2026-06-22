@@ -64,7 +64,7 @@ function StoreNavbar() {
   return (
     <header className="glass-nav sticky top-0 z-40 pt-safe">
       <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-4 md:h-16 md:px-6">
-        <Link href="/" aria-label="Go to UP!Store home">
+        <Link href="/" aria-label="Go to UP! Store home">
           <Wordmark />
         </Link>
 

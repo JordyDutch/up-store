@@ -32,11 +32,11 @@ export async function GET() {
     })
     .join("\n");
 
-  const body = `# LUKSO UP!Store
+  const body = `# LUKSO UP! Store
 
 > A storefront for Mini-Apps that run on LUKSO Universal Profiles. Browse and search apps, open any of them instantly, or add one to your Universal Profile "Grid" (LSP-28 The Grid) on universaleverything.io — from desktop or mobile.
 
-LUKSO UP!Store lists ${apps.length} Mini-Apps. Every app can be:
+LUKSO UP! Store lists ${apps.length} Mini-Apps. Every app can be:
 - **Opened** directly at its app URL, or
 - **Added to a Universal Profile Grid** via the universaleverything.io add-widget flow.
 

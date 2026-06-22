@@ -17,11 +17,11 @@ export function Wordmark({ className, size = "md" }: WordmarkProps) {
   return (
     <span
       className={cn("relative inline-flex shrink-0 select-none", dimensions, className)}
-      aria-label="LUKSO UP!Store"
+      aria-label="LUKSO UP! Store"
     >
       <Image
         src="/brand/upstore-wordmark.webp"
-        alt="LUKSO UP!Store"
+        alt="LUKSO UP! Store"
         width={960}
         height={220}
         priority

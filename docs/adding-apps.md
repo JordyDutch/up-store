@@ -1,4 +1,4 @@
-# Adding apps to the LUKSO UP!Store catalog
+# Adding apps to the LUKSO UP! Store catalog
 
 Adding an app is **two steps**: drop in some images, add one JSON object.
 No TypeScript edits, no imports, no duplicated fields. An agent should be able to
@@ -6,7 +6,7 @@ complete the task using only this file.
 
 > **How to contribute.** This catalog is community-maintained on GitHub. To add a
 > new app or change an existing one, fork
-> [`JordyDutch/mini-store`](https://github.com/JordyDutch/mini-store/), make the
+> [`JordyDutch/up-store`](https://github.com/JordyDutch/up-store/), make the
 > edits described below, and **open a pull request**. Nothing changes in the live
 > store until a maintainer merges your PR — so it is safe to experiment. Want a
 > detail fixed but don't want to edit yourself? Open an issue or a PR describing
@@ -163,5 +163,5 @@ Both must pass. Don't use `npm run dev` for verification (it's a long-running se
 
 Once they pass, commit your changes (the `apps.json` edit and the new
 `public/apps/<slug>/` images) and **open a pull request** against
-[`JordyDutch/mini-store`](https://github.com/JordyDutch/mini-store/). A
+[`JordyDutch/up-store`](https://github.com/JordyDutch/up-store/). A
 maintainer reviews and merges it — that's when your app goes live in the store.

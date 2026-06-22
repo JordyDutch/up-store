@@ -20,9 +20,9 @@ const display = Space_Grotesk({
   display: "swap",
 });
 
-const siteName = "LUKSO UP!Store";
+const siteName = "LUKSO UP! Store";
 const siteDescription =
-  "Discover and launch apps for your Universal Profile. Browse the LUKSO UP!Store anywhere, or add apps directly to your Grid.";
+  "Discover and launch apps for your Universal Profile. Browse the LUKSO UP! Store anywhere, or add apps directly to your Grid.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,12 +37,12 @@ export const metadata: Metadata = {
     "dApps",
     "Web3",
     "LYX",
-    "UP!Store",
+    "UP! Store",
   ],
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
   publisher: siteName,
-  // Default social-share image is the UP!Store wordmark; per-app pages override
+  // Default social-share image is the UP! Store wordmark; per-app pages override
   // title/description/images in their generateMetadata.
   openGraph: {
     type: "website",
@@ -107,14 +107,14 @@ const siteJsonLd = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      name: "LUKSO UP!Store",
+      name: "LUKSO UP! Store",
       url: siteUrl,
       logo: `${siteUrl}/brand/upstore-wordmark.webp`,
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
-      name: "LUKSO UP!Store",
+      name: "LUKSO UP! Store",
       description:
         "Discover Mini-Apps for your LUKSO Universal Profile. Open any app, or add it to your Universal Profile Grid.",
       url: siteUrl,

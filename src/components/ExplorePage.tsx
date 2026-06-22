@@ -139,7 +139,7 @@ export default function ExplorePage({ onAppClick }: ExplorePageProps) {
     <div className="flex flex-col gap-12 pb-4 md:gap-16">
       {/* Lead-in headline — the editorial top of the discover home */}
       <div>
-        <p className="eyebrow">LUKSO UP!Store</p>
+        <p className="eyebrow">LUKSO UP! Store</p>
         <h1 className="mt-1.5 text-balance font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground md:text-[40px]">
           Discover apps for your{" "}
           <span className="bg-brand-gradient bg-clip-text text-transparent">

@@ -1,6 +1,6 @@
-# LUKSO UP!Store
+# LUKSO UP! Store
 
-LUKSO UP!Store is a community-maintained directory for LUKSO Universal Profile
+LUKSO UP! Store is a community-maintained directory for LUKSO Universal Profile
 Mini-Apps. Users can browse apps, open them directly, or add them to a Universal
 Profile Grid.
 
@@ -46,8 +46,40 @@ To update the catalog:
 4. Run the verification commands.
 5. Open a pull request.
 
+### Requirements for a new app
+
+Submissions are only merged when **all data is complete and the images are in
+place**. Every new app must include:
+
+- **A unique slug** — lowercase and hyphenated (e.g. `awesome-swap`). The
+  `apps.json` key and the `public/apps/<slug>/` folder name must be identical.
+- **Images** in `public/apps/<slug>/`, PNG only:
+  - `logo.png` — square app icon (required)
+  - `banner.png` — wide ~16:9 banner (required)
+  - **At least one screenshot** — `screenshot-1.png`, `screenshot-2.png`, …
+    numbered from `1` with no gaps. Apps without screenshots are not accepted.
+- **All required JSON fields, filled in and accurate:**
+  - `name` — display name
+  - `url` — the live app the **Open** button launches (must actually load)
+  - `developer` — shown under the app name
+  - `publisher` — the publisher's Universal Profile address (`0x…`)
+  - `categories` — one or more from the [valid list](docs/adding-apps.md#valid-categories-must-match-exactly)
+  - `gridSize` — `[width, height]`
+  - `screenshots` — integer that **equals** the number of `screenshot-N.png`
+    files you added (a wrong count produces broken images)
+- **Optional but encouraged:** `sourceCode`, `tags`, and extra `widgets`.
+- **Valid JSON** (no trailing commas, no comments) that passes both
+  verification commands below.
+
 See [docs/adding-apps.md](docs/adding-apps.md) for the exact JSON fields, image
-naming rules and category list.
+naming rules, the full category list and common mistakes to avoid.
+
+## Contributing
+
+Catalog additions and code changes are both welcome. Read
+**[CONTRIBUTING.md](CONTRIBUTING.md)** for the full submission requirements,
+local setup, code conventions and the verification/PR flow before opening a pull
+request.
 
 ## Important Routes
 
@@ -143,8 +175,8 @@ https://envio.lukso-mainnet.universal.tech/v1/graphql
 ## Local Development
 
 ```bash
-git clone https://github.com/JordyDutch/mini-store.git
-cd mini-store
+git clone https://github.com/JordyDutch/up-store.git
+cd up-store
 npm install
 npm run dev
 ```
@@ -181,7 +213,7 @@ npm run lint
 
 ## Project Status
 
-This repository is focused on the live JordyDutch UP!Store flow:
+This repository is focused on the live JordyDutch UP! Store flow:
 
 - community catalog updates through pull requests;
 - app discovery and Add to Grid links for users;

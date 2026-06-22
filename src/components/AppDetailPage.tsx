@@ -287,7 +287,7 @@ export default function AppDetailPage({ app, onBack }: AppDetailPageProps) {
           {/* Brand anchored left, matching the store navbar */}
           <Link
             href="/"
-            aria-label="LUKSO UP!Store home"
+            aria-label="LUKSO UP! Store home"
             className="flex min-w-0 items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Wordmark />
