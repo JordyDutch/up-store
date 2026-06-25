@@ -100,7 +100,13 @@ export default function StoreExperience({ variant = "auto" }: StoreExperiencePro
         )}
       >
         <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-4 md:h-16 md:px-6">
-          <Wordmark />
+          <Link
+            href="/"
+            aria-label="Go to UP! Store home"
+            className="flex min-w-0 items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Wordmark />
+          </Link>
 
           <div className="flex items-center gap-2 md:gap-3">
             {/* Desktop tab links */}
