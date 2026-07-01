@@ -7,7 +7,8 @@
     "gridSize": [1, 2],
     "screenshots": 6,
     "tags": ["tipping", "creators", "live streams", "polls", "LYX", "OBS overlay"],
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-25"
   },
   "defolio-multisend": {
     "name": "Multisend: Send Tokens & NFTs",
@@ -25,7 +26,8 @@
       2
     ],
     "screenshots": 5,
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-16"
   },
   "stakingverse-staking": {
     "name": "Stakingverse: Stake Your LYX",
@@ -61,7 +63,8 @@
         "gridSize": [1, 1],
         "description": "Swap between LYX and sLYX in a tap."
       }
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "deliquified-roasted": {
     "name": "Roasted: Roast Profiles",
@@ -76,7 +79,8 @@
       1
     ],
     "screenshots": 6,
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-16"
   },
   "aratta-labs-draco": {
     "name": "Dracos: Swipe & Mint",
@@ -91,7 +95,8 @@
       2
     ],
     "screenshots": 2,
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-16"
   },
   "aratta-labs-pigmint": {
     "name": "Pigmint: Mint Your Mood",
@@ -107,7 +112,8 @@
       2
     ],
     "screenshots": 3,
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-16"
   },
   "deliquified-notes": {
     "name": "Notes: Take Notes Privately",
@@ -123,7 +129,8 @@
       2
     ],
     "screenshots": 2,
-    "featured": false
+    "featured": false,
+    "addedAt": "2026-06-16"
   },
   "universal-profiles-mobile": {
     "name": "Universal Profiles Mobile: Your Web3 Identity",
@@ -145,7 +152,8 @@
       "UP Mobile",
       "Universal Profiles",
       "Wallet"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "openclaw": {
     "name": "OpenClaw: Authorize AI Agents",
@@ -168,7 +176,8 @@
       "OpenClaw",
       "AI Agents",
       "Controller"
-    ]
+    ],
+    "addedAt": "2026-06-18"
   },
   "universal-profile-authorize": {
     "name": "UP Authorize: Add Controllers",
@@ -189,7 +198,8 @@
       "Universal Profile",
       "Authorize",
       "Controller"
-    ]
+    ],
+    "addedAt": "2026-06-18"
   },
   "agent-token-claimer": {
     "name": "Token Claimer: Create LUKSO Drops",
@@ -214,7 +224,8 @@
       "LSP7",
       "LSP8",
       "Airdrops"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "lsp-asset-mover": {
     "name": "LSP Asset Mover: Transfer Assets",
@@ -239,7 +250,8 @@
       "Assets",
       "Migration",
       "Universal Profile"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "universal-everything": {
     "name": "Universal Everything: Explore Profiles",
@@ -262,7 +274,8 @@
       "Profiles",
       "Assets",
       "Explorer"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "universal-page": {
     "name": "Universal Page: NFTs 2.0 Marketplace",
@@ -283,7 +296,8 @@
       "Marketplace",
       "Collectibles",
       "NFTs"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "phlox": {
     "name": "Phlox: Trade on LUKSO",
@@ -304,7 +318,8 @@
       "Swap",
       "Liquidity",
       "DeFi"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "phlame-garden": {
     "name": "PHLAME Protocol: Onchain Reputation",
@@ -327,7 +342,8 @@
       "Reputation",
       "Garden",
       "Leaderboard"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "potato-tipper": {
     "name": "POTATO Tipper: Tip New Followers",
@@ -348,7 +364,8 @@
       "POTATO",
       "Followers",
       "Tipping"
-    ]
+    ],
+    "addedAt": "2026-06-18"
   },
   "profile-jump": {
     "name": "Profile Jump: Discover Universal Profiles",
@@ -369,7 +386,8 @@
       "Discovery",
       "Analytics",
       "Profiles"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "airdropper": {
     "name": "Airdropper: Drop Tokens and Collectibles",
@@ -392,7 +410,8 @@
       "Airdrops",
       "Tokens",
       "Collectibles"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "proof-of-presence": {
     "name": "Proof of Presence: Event Credentials",
@@ -414,7 +433,8 @@
       "Events",
       "Credentials",
       "Attendance"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "nexus-hyperlane-bridge": {
     "name": "Nexus Bridge: Bridge LYX",
@@ -435,7 +455,8 @@
       "Bridge",
       "LYX",
       "Ethereum"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "forever-moments": {
     "name": "Forever Moments: Preserve Memories",
@@ -457,7 +478,8 @@
       "Moments",
       "Memories",
       "Collections"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "hup": {
     "name": "Hup: Onchain Social Network",
@@ -478,7 +500,8 @@
       "Social",
       "Posts",
       "Onchain"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "common-ground": {
     "name": "Common Ground: Community Coordination",
@@ -501,7 +524,8 @@
       "Community",
       "Coordination",
       "Events"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "gallery-marketplace": {
     "name": "3D Marketplace: Grid Gallery",
@@ -522,7 +546,8 @@
       "Marketplace",
       "Grid",
       "Universal Page"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "day-glimpse": {
     "name": "Day Glimpse: Share Grid Moments",
@@ -543,7 +568,8 @@
       "Grid",
       "Moments",
       "Mini App"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "follower-tracker": {
     "name": "FollowerTracker: Analyze UP Connections",
@@ -564,7 +590,8 @@
       "Universal Profile",
       "Social Graph",
       "Analytics"
-    ]
+    ],
+    "addedAt": "2026-06-19"
   },
   "universal-everything-create-asset": {
     "name": "Token Creator",
@@ -584,7 +611,8 @@
       "Token Creator",
       "LSP7",
       "Assets"
-    ]
+    ],
+    "addedAt": "2026-06-17"
   },
   "team-finance-lukso-tools": {
     "name": "Team Finance: LUKSO Token Tools",
@@ -606,7 +634,8 @@
       "Vesting",
       "Locks",
       "Multisender"
-    ]
+    ],
+    "addedAt": "2026-06-16"
   },
   "groov": {
     "name": "Groov: Collect Music Onchain",
@@ -626,7 +655,8 @@
       "Music",
       "Collectibles",
       "Fanzones"
-    ]
+    ],
+    "addedAt": "2026-06-17"
   },
   "permission-control": {
     "name": "Permission Control: Manage UP Controllers",
@@ -646,7 +676,8 @@
       "Controllers",
       "Permissions",
       "Universal Profiles"
-    ]
+    ],
+    "addedAt": "2026-06-17"
   },
   "universal-grave": {
     "name": "Universal Grave",
@@ -666,7 +697,8 @@
       "Grave",
       "Digital Assets",
       "Spam"
-    ]
+    ],
+    "addedAt": "2026-06-17"
   },
   "up-assistants": {
     "name": "UP Assistants",
@@ -687,6 +719,7 @@
       "Assistants",
       "Catalog",
       "AI"
-    ]
+    ],
+    "addedAt": "2026-06-17"
   }
 }

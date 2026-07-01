@@ -1,27 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import {
-  BadgePercent,
-  Bot,
-  BookOpen,
-  Brain,
-  Coins,
   ExternalLink,
-  Gamepad2,
-  Globe,
-  Landmark,
-  Layers3,
-  Music,
-  Palette,
   Search,
-  Shield,
-  Shirt,
-  ShoppingCart,
+  Sparkles,
   Star,
-  Store,
-  Users,
   X,
 } from "lucide-react";
 
@@ -31,14 +16,21 @@ import BookmarkButton from "@/components/BookmarkButton";
 import { buildAppBookmark } from "@/lib/bookmarks";
 import GridSelectionDialog from "@/components/GridSelectionDialog";
 import { useAppLaunch } from "@/hooks/useAppLaunch";
-import { cn } from "@/lib/utils";
 import { searchApps } from "@/utils/search";
 import { useHydrated } from "@/hooks/useHydrated";
+import CategoryCloud, {
+  CATEGORY_ICONS,
+  type CategoryOption,
+} from "@/components/CategoryCloud";
 import {
   categories as appCategories,
   type App,
   apps,
+  getNewestApps,
+  NEW_FILTER_ID,
   shuffle,
+  sortByNewest,
+  sortCategoriesByRelevance,
 } from "@/data/appCatalog";
 
 interface SearchPageProps {
@@ -46,26 +38,6 @@ interface SearchPageProps {
 }
 
 type CategoryFilter = "all" | string;
-
-const categoryIcons: Record<string, ReactNode> = {
-  Art: <Palette className="h-4 w-4" />,
-  AI: <Brain className="h-4 w-4" />,
-  Brands: <Store className="h-4 w-4" />,
-  Community: <Users className="h-4 w-4" />,
-  DAOs: <Landmark className="h-4 w-4" />,
-  DeFi: <Coins className="h-4 w-4" />,
-  Exchanges: <BadgePercent className="h-4 w-4" />,
-  Fashion: <Shirt className="h-4 w-4" />,
-  Gaming: <Gamepad2 className="h-4 w-4" />,
-  Infrastructure: <Layers3 className="h-4 w-4" />,
-  Marketplaces: <ShoppingCart className="h-4 w-4" />,
-  "Mini-Apps": <Bot className="h-4 w-4" />,
-  Music: <Music className="h-4 w-4" />,
-  NFTs: <Star className="h-4 w-4" />,
-  Security: <Shield className="h-4 w-4" />,
-  Social: <Globe className="h-4 w-4" />,
-  Staking: <BookOpen className="h-4 w-4" />,
-};
 
 export default function SearchPage({ onAppClick }: SearchPageProps) {
   const { sections } = useGrid();
@@ -117,22 +89,52 @@ export default function SearchPage({ onAppClick }: SearchPageProps) {
       .filter((category) => category.count > 0);
   }, [allApps, allCategories]);
 
-  const activeCategory = useMemo(
-    () =>
-      selectedCategory === "all"
-        ? null
-        : categoryCounts.find((category) => category.id === selectedCategory) ?? null,
-    [categoryCounts, selectedCategory]
+  // Newest-first slice of the catalog powering the "New" pseudo-category chip,
+  // shared with the Trending page via the same appCatalog helpers.
+  const newestApps = useMemo(() => getNewestApps(allApps), [allApps]);
+  const newestIds = useMemo(
+    () => new Set(newestApps.map((app) => app.id)),
+    [newestApps]
   );
 
+  const options = useMemo<CategoryOption[]>(
+    () => [
+      { id: "all", label: "All", count: allApps.length },
+      {
+        id: NEW_FILTER_ID,
+        label: "New",
+        count: newestApps.length,
+        icon: <Sparkles className="h-4 w-4" />,
+      },
+      ...sortCategoriesByRelevance(categoryCounts).map((category) => ({
+        id: category.id,
+        label: category.displayName,
+        count: category.count,
+        icon: CATEGORY_ICONS[category.id] ?? <Star className="h-4 w-4" />,
+      })),
+    ],
+    [allApps.length, categoryCounts, newestApps.length]
+  );
+
+  const activeCategory = useMemo(() => {
+    if (selectedCategory === "all") return null;
+    if (selectedCategory === NEW_FILTER_ID) {
+      return { id: NEW_FILTER_ID, name: NEW_FILTER_ID, displayName: "New" };
+    }
+    return categoryCounts.find((category) => category.id === selectedCategory) ?? null;
+  }, [categoryCounts, selectedCategory]);
+
   const visibleApps = useMemo(() => {
-    const searched = deferredSearchTerm.trim()
+    const base = deferredSearchTerm.trim()
       ? searchApps(allApps, deferredSearchTerm)
       : browseApps;
 
-    if (selectedCategory === "all") return searched;
-    return searched.filter((app) => app.categories.includes(selectedCategory));
-  }, [allApps, browseApps, deferredSearchTerm, selectedCategory]);
+    if (selectedCategory === "all") return base;
+    if (selectedCategory === NEW_FILTER_ID) {
+      return sortByNewest(base.filter((app) => newestIds.has(app.id)));
+    }
+    return base.filter((app) => app.categories.includes(selectedCategory));
+  }, [allApps, browseApps, deferredSearchTerm, newestIds, selectedCategory]);
 
   const {
     pendingApp,
@@ -189,24 +191,12 @@ export default function SearchPage({ onAppClick }: SearchPageProps) {
         {/* Category tag cloud — wraps across rows instead of a single scroll row */}
         <nav aria-label="Filter apps by category" className="mb-4">
           <p className="eyebrow mb-2">Browse by category</p>
-          <div className="flex flex-wrap gap-1.5">
-            <CategoryChip
-              label="All"
-              count={allApps.length}
-              active={selectedCategory === "all"}
-              onClick={() => setSelectedCategory("all")}
-            />
-            {categoryCounts.map((category) => (
-              <CategoryChip
-                key={category.id}
-                label={category.displayName}
-                count={category.count}
-                icon={categoryIcons[category.name] || <Star className="h-4 w-4" />}
-                active={selectedCategory === category.id}
-                onClick={() => setSelectedCategory(category.id)}
-              />
-            ))}
-          </div>
+          <CategoryCloud
+            options={options}
+            activeId={selectedCategory}
+            onSelect={setSelectedCategory}
+            ariaLabel="Filter apps by category"
+          />
         </nav>
 
         <div className="mb-3 flex min-h-7 items-center justify-between gap-3 px-1">
@@ -261,47 +251,6 @@ export default function SearchPage({ onAppClick }: SearchPageProps) {
         onCancel={handleGridSelectionCancel}
       />
     </div>
-  );
-}
-
-interface CategoryChipProps {
-  label: string;
-  count: number;
-  active: boolean;
-  icon?: ReactNode;
-  onClick: () => void;
-}
-
-function CategoryChip({ label, count, active, icon, onClick }: CategoryChipProps) {
-  return (
-    <button
-      type="button"
-      aria-pressed={active}
-      onClick={onClick}
-      className={cn(
-        "inline-flex h-8 grow items-center justify-center gap-1.5 rounded-full border px-2.5 text-[13px] font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_svg]:h-3.5 [&_svg]:w-3.5",
-        active
-          ? "border-brand bg-brand text-primary-foreground shadow-sm hover:bg-brand-hover dark:text-background dark:hover:bg-brand-hover"
-          : "border-border-strong bg-card text-foreground hover:bg-muted dark:bg-muted dark:hover:bg-accent"
-      )}
-    >
-      {icon ? (
-        <span className="shrink-0 text-current opacity-70" aria-hidden="true">
-          {icon}
-        </span>
-      ) : null}
-      <span>{label}</span>
-      <span
-        className={cn(
-          "tabular-nums text-[11px]",
-          active
-            ? "text-primary-foreground/75 dark:text-background/70"
-            : "text-text-tertiary"
-        )}
-      >
-        {count}
-      </span>
-    </button>
   );
 }
 

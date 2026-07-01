@@ -10,6 +10,7 @@ import AppSlider from "./AppSlider";
 import TopChartsSlider from "./TopChartsSlider";
 import {
   getAppsByCategory,
+  getNewestApps,
   apps,
   featuredApps,
   shuffle,
@@ -111,6 +112,10 @@ export default function ExplorePage({ onAppClick }: ExplorePageProps) {
     };
   }, []);
 
+  // Newest apps — ordered strictly by recency, never shuffled, so this rail
+  // is identical on the server and the first client render.
+  const newestApps = useMemo(() => getNewestApps(base.all, 8), [base.all]);
+
   // Global open counts — drives the popularity ranking in Trending. Loads
   // post-mount; {} until then so SSR/first render stays stable.
   const trendingCounts = useTrending();
@@ -160,6 +165,21 @@ export default function ExplorePage({ onAppClick }: ExplorePageProps) {
         intro="A rotating mix of standout apps, front and center."
       >
         <FeaturedBanner apps={featuredSlides} onAppClick={onAppClick} />
+      </DiscoverSection>
+
+      {/* Newest apps — most recent arrivals, ordered by recency only. Sits
+          above Trending so the latest additions are the first ranked list. */}
+      <DiscoverSection
+        eyebrow="New"
+        title="Newest apps"
+        intro="The latest apps to land in the store."
+      >
+        <AppSlider
+          title=""
+          ariaLabel="Newest apps"
+          apps={newestApps}
+          onAppClick={onAppClick}
+        />
       </DiscoverSection>
 
       {/* Trending — social proof. TopChartsSlider renders the filter + table

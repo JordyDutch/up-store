@@ -43,6 +43,7 @@ import GridSelectionDialog from "./GridSelectionDialog";
 import BookmarkButton from "@/components/BookmarkButton";
 import ShareAppButton from "@/components/ShareAppButton";
 import { buildAppBookmark, buildProfileBookmark } from "@/lib/bookmarks";
+import { trackOpen } from "@/lib/trackOpen";
 
 // Helper function to convert IPFS URL to HTTP URL
 const convertIpfsUrl = (url: string): string => {
@@ -161,6 +162,11 @@ export default function AppDetailPage({ app, onBack }: AppDetailPageProps) {
 
   const previewImages = app.app.previewImages ?? [];
   const hasScreenshots = previewImages.length > 0;
+
+  useEffect(() => {
+    // Every detail-page view counts as an engagement (deduped in trackOpen).
+    trackOpen(app?.id);
+  }, [app?.id]);
 
   useEffect(() => {
     // Fetch profile data if universal profile is available

@@ -3,13 +3,20 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles, Star } from "lucide-react";
 
+import CategoryCloud, {
+  CATEGORY_ICONS,
+  type CategoryOption,
+} from "@/components/CategoryCloud";
 import {
   App,
   categories as appCategories,
+  getNewestApps,
   getPrimaryCategory,
+  NEW_FILTER_ID,
   sortByOpenCount,
+  sortCategoriesByRelevance,
 } from "@/data/appCatalog";
 
 interface TopChartsSliderProps {
@@ -30,17 +37,6 @@ type ChartFilter = string;
 // real category id in appCatalog.
 const ALL_FILTER_ID = "All";
 
-const PRIORITY_CATEGORIES = [
-  "DeFi",
-  "Staking",
-  "NFTs",
-  "Marketplaces",
-  "Community",
-  "Social",
-  "Infrastructure",
-  "Exchanges",
-];
-
 export default function TopChartsSlider({
   apps,
   onAppClick,
@@ -48,7 +44,7 @@ export default function TopChartsSlider({
 }: TopChartsSliderProps) {
   const [activeFilter, setActiveFilter] = useState<ChartFilter>(ALL_FILTER_ID);
   const reduceMotion = useReducedMotion();
-  const filterOptions = useMemo(() => {
+  const options: CategoryOption[] = useMemo(() => {
     const counts = new Map<string, number>();
 
     apps.forEach((app) => {
@@ -57,31 +53,30 @@ export default function TopChartsSlider({
       });
     });
 
-    const categoryOptions = Object.values(appCategories)
+    const categoryOptionsWithCountGtZero = Object.values(appCategories)
       .map((category) => ({
         id: category.id,
         label: category.displayName,
         count: counts.get(category.id) ?? 0,
       }))
-      .filter((category) => category.count > 0)
-      .sort((a, b) => {
-        const aPriority = PRIORITY_CATEGORIES.indexOf(a.id);
-        const bPriority = PRIORITY_CATEGORIES.indexOf(b.id);
+      .filter((category) => category.count > 0);
 
-        if (aPriority !== -1 || bPriority !== -1) {
-          return (
-            (aPriority === -1 ? Number.MAX_SAFE_INTEGER : aPriority) -
-            (bPriority === -1 ? Number.MAX_SAFE_INTEGER : bPriority)
-          );
-        }
-
-        return a.label.localeCompare(b.label);
-      });
-
-    // "All" leads the list and is the default tab — every app, ranked overall.
+    // "All" and "New" lead the list, then the LUKSO-relevance-ordered
+    // categories — identical ordering to the Search page's category cloud.
     return [
       { id: ALL_FILTER_ID, label: "All", count: apps.length },
-      ...categoryOptions,
+      {
+        id: NEW_FILTER_ID,
+        label: "New",
+        count: getNewestApps(apps).length,
+        icon: <Sparkles className="h-4 w-4" />,
+      },
+      ...sortCategoriesByRelevance(categoryOptionsWithCountGtZero).map((c) => ({
+        id: c.id,
+        label: c.label,
+        count: c.count,
+        icon: CATEGORY_ICONS[c.id] ?? <Star className="h-4 w-4" />,
+      })),
     ];
   }, [apps]);
 
@@ -91,65 +86,37 @@ export default function TopChartsSlider({
 
   // The active filter may not exist in the current catalog; fall back to the
   // first available option ("All") so the table never opens on an empty tab.
-  const effectiveFilter = filterOptions.some((filter) => filter.id === activeFilter)
+  const effectiveFilter = options.some((option) => option.id === activeFilter)
     ? activeFilter
-    : filterOptions[0]?.id ?? "";
+    : options[0]?.id ?? "";
 
   // Rank most-opened first; ties keep incoming order. "All" ranks the whole
-  // catalog (most-trending overall), otherwise scope to the active category.
-  const filteredApps = sortByOpenCount(
+  // catalog (most-trending overall), "New" shows the newest apps, otherwise
+  // scope to the active category.
+  const filteredApps =
     effectiveFilter === ALL_FILTER_ID
-      ? apps
-      : apps.filter((app) => app.categories.includes(effectiveFilter)),
-    trendingCounts ?? {}
-  );
+      ? sortByOpenCount(apps, trendingCounts ?? {})
+      : effectiveFilter === NEW_FILTER_ID
+        ? getNewestApps(apps)
+        : sortByOpenCount(
+            apps.filter((app) => app.categories.includes(effectiveFilter)),
+            trendingCounts ?? {}
+          );
   const activeLabel =
-    filterOptions.find((filter) => filter.id === effectiveFilter)?.label ?? effectiveFilter;
+    options.find((option) => option.id === effectiveFilter)?.label ?? effectiveFilter;
 
   return (
     <div>
-      {/* Segmented category filter (the section heading is owned by the parent
-          DiscoverSection). A set of toggle buttons, not tabs — there are no
-          tabpanels — so we use aria-pressed. */}
-      <div
-        className="seg-track mb-5 max-w-full overflow-x-auto"
-        role="group"
-        aria-label="Filter trending apps by category"
-      >
-        <div className="flex min-w-max gap-1">
-          {filterOptions.map((filter) => {
-            const isActive = effectiveFilter === filter.id;
-            return (
-              <button
-                key={filter.id}
-                type="button"
-                aria-pressed={isActive}
-                onClick={() => setActiveFilter(filter.id)}
-                className={`relative min-h-[44px] min-w-[88px] rounded-full px-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                  isActive ? "text-brand-text" : "text-text-secondary hover:text-foreground"
-                }`}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="top-charts-pill"
-                    className="absolute inset-0 rounded-full bg-card shadow-rest"
-                    transition={
-                      reduceMotion
-                        ? { duration: 0 }
-                        : { type: "spring", stiffness: 380, damping: 32 }
-                    }
-                  />
-                )}
-                <span className="relative z-10 inline-flex items-center gap-1.5">
-                  {filter.label}
-                  <span className="text-xs tabular-nums text-text-secondary">
-                    {filter.count}
-                  </span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
+      {/* Category tag-cloud (the section heading is owned by the parent
+          DiscoverSection). Identical in look/behavior to the Search page's
+          category cloud. */}
+      <div className="mb-5">
+        <CategoryCloud
+          options={options}
+          activeId={effectiveFilter}
+          onSelect={setActiveFilter}
+          ariaLabel="Filter trending apps by category"
+        />
       </div>
 
       {/* Announce the active category + result count to assistive tech */}

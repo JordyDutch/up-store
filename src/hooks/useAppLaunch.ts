@@ -68,6 +68,8 @@ export function useAppLaunch(): UseAppLaunch {
   // gated to the in-Grid (mobile) context.
   const addToGrid = useCallback(
     (app: App, widget?: AppWidget) => {
+      // Add to Grid counts as an engagement too (deduped in trackOpen).
+      trackOpen(app?.id);
       if (canInstallToGrid) {
         install.handleInstall(app, widget);
         return;

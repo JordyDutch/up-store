@@ -32,6 +32,7 @@ interface AppManifestEntry {
   featured?: boolean;
   featuredTitle?: string; // when present, the app appears in the featured hero
   widgets?: AppWidgetManifestEntry[]; // extra widgets addable to the Grid
+  addedAt?: string;
 }
 
 // A single addable Grid widget (the app's primary surface is its `url`; these
@@ -68,6 +69,7 @@ export interface App {
   featured?: boolean;
   featuredTitle?: string;
   widgets?: AppWidget[]; // extra widgets beyond the primary app surface
+  addedAt?: string;
 }
 
 export interface FeaturedApp extends App {
@@ -113,6 +115,7 @@ function toApp(slug: string, entry: AppManifestEntry): App {
     tags: entry.tags,
     featured: entry.featured ?? false,
     featuredTitle: entry.featuredTitle,
+    addedAt: entry.addedAt,
     widgets: (entry.widgets ?? []).map((w) => ({
       name: w.name,
       url: w.url,
@@ -155,6 +158,14 @@ const getDeduplicationKey = (app: App) => {
   return `${normalizeKey(owner)}:${normalizeKey(getProductFamily(app))}`;
 };
 
+// Pick the more recent of two ISO-ish date strings; falls back to whichever is
+// present when the other is missing.
+const moreRecentAddedAt = (a?: string, b?: string): string | undefined => {
+  if (!a) return b;
+  if (!b) return a;
+  return Date.parse(a) >= Date.parse(b) ? a : b;
+};
+
 const mergeDuplicateApps = (canonical: App, duplicate: App): App => {
   return {
     ...canonical,
@@ -167,6 +178,7 @@ const mergeDuplicateApps = (canonical: App, duplicate: App): App => {
     ]),
     featured: canonical.featured || duplicate.featured,
     featuredTitle: canonical.featuredTitle ?? duplicate.featuredTitle,
+    addedAt: moreRecentAddedAt(canonical.addedAt, duplicate.addedAt),
     widgets: dedupeWidgets([
       ...(canonical.widgets ?? []),
       ...(duplicate.widgets ?? []),
@@ -267,3 +279,63 @@ export const sortByOpenCount = <T extends { id?: string }>(
   [...items].sort(
     (a, b) => (counts[b.id ?? ""] ?? 0) - (counts[a.id ?? ""] ?? 0)
   );
+
+// Canonical LUKSO-relevance category order, shared by every category cloud
+// (Search + Trending) so both pages present categories identically.
+export const CATEGORY_PRIORITY: string[] = [
+  "Social",
+  "NFTs",
+  "Community",
+  "Art",
+  "Music",
+  "Fashion",
+  "DeFi",
+  "Marketplaces",
+  "Gaming",
+  "DAOs",
+  "Staking",
+  "AI",
+  "Infrastructure",
+  "Exchanges",
+  "Security",
+  "Brands",
+];
+
+// Sort a list of category-like objects by CATEGORY_PRIORITY, returning a new
+// array. Unknown ids (not present in CATEGORY_PRIORITY) sort last, and ties
+// (including two unknowns) break alphabetically by id.
+export const sortCategoriesByRelevance = <T extends { id: string }>(
+  cats: readonly T[]
+): T[] => {
+  const priorityIndex = (id: string) => {
+    const index = CATEGORY_PRIORITY.indexOf(id);
+    return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+  };
+
+  return [...cats].sort((a, b) => {
+    const diff = priorityIndex(a.id) - priorityIndex(b.id);
+    return diff !== 0 ? diff : a.id.localeCompare(b.id);
+  });
+};
+
+// Pseudo-category id/config for the "New" chip shown alongside real
+// categories on both the Search and Trending category clouds.
+export const NEW_FILTER_ID = "New";
+export const NEW_APPS_COUNT = 8;
+
+// Missing/invalid addedAt sorts as -Infinity so those apps land last.
+const addedAtTimestamp = (app: App): number => {
+  const parsed = app.addedAt ? Date.parse(app.addedAt) : NaN;
+  return Number.isNaN(parsed) ? -Infinity : parsed;
+};
+
+// Newest-first ordering by addedAt. Stable and non-mutating: spreads the
+// input before sorting so apps with missing/invalid addedAt keep their
+// relative order at the tail.
+export const sortByNewest = (list: App[]): App[] =>
+  [...list].sort((a, b) => addedAtTimestamp(b) - addedAtTimestamp(a));
+
+export const getNewestApps = (
+  list: App[] = Object.values(apps),
+  limit: number = NEW_APPS_COUNT
+): App[] => sortByNewest(list).slice(0, limit);

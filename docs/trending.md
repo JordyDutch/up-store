@@ -1,28 +1,35 @@
 # App-open tracking & popularity Trending
 
-The store records how often each app is **opened** and ranks the **Trending**
-section by those counts. Data lives in **Upstash Redis**, so it survives both a
-browser refresh and a Vercel redeploy/upgrade (the counts are external state,
-not part of the deployment).
+The store records how often each app is **engaged with** and ranks the
+**Trending** section by those counts. Data lives in **Upstash Redis**, so it
+survives both a browser refresh and a Vercel redeploy/upgrade (the counts are
+external state, not part of the deployment).
 
 ## How it works
 
 ```
-open click ──▶ useAppLaunch.openApp ──▶ trackOpen(app.id)
-                                          │  (sessionStorage dedup: 1×/app/session)
-                                          ▼
-                              POST /api/track-open  ──▶ recordOpen(appId, ip)
-                                          │                 │ 10-min per-ip+app cooldown
-                                          │                 ▼
-                                          │            HINCRBY app:opens <appId> 1
-                                          ▼
+detail-page view ──▶ AppDetailPage useEffect([app?.id]) ──┐
+open click ──────────▶ useAppLaunch.openApp ───────────────┼──▶ trackOpen(app.id)
+add to grid ─────────▶ useAppLaunch.addToGrid ─────────────┘     │  (sessionStorage dedup: 1×/app/session)
+                                                                  ▼
+                                          POST /api/track-open  ──▶ recordOpen(appId, ip)
+                                                    │                 │ 10-min per-ip+app cooldown
+                                                    │                 ▼
+                                                    │            HINCRBY app:opens <appId> 1
+                                                    ▼
 Trending ◀── TopChartsSlider ◀── useTrending() ◀── GET /api/trending ──▶ HGETALL app:opens
    (sortByOpenCount: most-opened first; ties keep the per-reload shuffle order)
 ```
 
-- **One chokepoint.** Every open path (featured, search, category, charts,
-  detail) funnels through `useAppLaunch.openApp`, so a single `trackOpen()` call
-  covers them all. Apps open in a new tab, so the signal reliably lands.
+- **Three tracked entry points, one call each.** Viewing an app's detail page
+  (`AppDetailPage`'s mount `useEffect`), launching it externally
+  (`useAppLaunch.openApp`), and adding it to the Grid
+  (`useAppLaunch.addToGrid`) each call `trackOpen()` directly. Every
+  card/row click and every direct `/store/[appId]` URL renders
+  `AppDetailPage`, so the detail-page view alone already covers all browse
+  paths; `openApp`/`addToGrid` add the two actions that can fire without a
+  detail-page visit. All three share the same dedup, so a view + launch + add
+  of the same app in one session still counts once total.
 - **Two dedup layers.** Client `sessionStorage` (1 per app per session) plus a
   server per-ip+app cooldown (10 min). Tune `COOLDOWN_SECONDS` in
   `src/lib/openCounts.ts`.
