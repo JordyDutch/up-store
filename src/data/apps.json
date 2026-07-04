@@ -721,5 +721,29 @@
       "AI"
     ],
     "addedAt": "2026-06-17"
+  },
+  "tipper": {
+    "name": "LUKSO Tipper: Send a Tip with a Note",
+    "url": "https://tipper.lukso.tools",
+    "developer": "tipper-app",
+    "publisher": "0x378Be8577ede94b9d4b9F45447F21B826501bab8",
+    "categories": [
+      "Social",
+      "Community",
+      "DeFi"
+    ],
+    "gridSize": [
+      1,
+      2
+    ],
+    "screenshots": 1,
+    "tags": [
+      "Tipping",
+      "LYX",
+      "USDC",
+      "LSP7",
+      "Universal Profile"
+    ],
+    "addedAt": "2026-07-04"
   }
 }
