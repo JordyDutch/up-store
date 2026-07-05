@@ -1,749 +1,749 @@
 {"fullsend": {
-    "name": "FullSend",
-    "url": "https://fullsend.live",
-    "developer": "Metaheads Studios",
-    "publisher": "0x29d7c7e4571a83b3ef5c867f75c81d736a9d58aa",
-    "categories": ["Social", "Community"],
-    "gridSize": [1, 2],
-    "screenshots": 6,
-    "tags": ["tipping", "creators", "live streams", "polls", "LYX", "OBS overlay"],
-    "featured": false,
-    "addedAt": "2026-06-25"
-  },
-  "defolio-multisend": {
-    "name": "Multisend: Send Tokens & NFTs",
-    "url": "https://multisend-alpha.vercel.app/",
-    "sourceCode": "https://github.com/deliquified/multisend",
-    "developer": "Deliquified Labs",
-    "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
-    "categories": [
-      "DeFi",
-      "NFTs",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 5,
-    "featured": false,
-    "addedAt": "2026-06-16"
-  },
-  "stakingverse-staking": {
-    "name": "Stakingverse: Stake Your LYX",
-    "url": "https://app.stakingverse.io/",
-    "developer": "Stakingverse",
-    "publisher": "0x900Be67854A47282211844BbdF5Cc0f332620513",
-    "categories": [
-      "DeFi",
-      "Staking"
-    ],
-    "gridSize": [
-      1,
-      1
-    ],
-    "screenshots": 2,
-    "featured": true,
-    "widgets": [
-      {
-        "name": "Liquid Staking",
-        "url": "https://app.stakingverse.io/liquid",
-        "gridSize": [1, 1],
-        "description": "Mint sLYX and earn auto-compounding staking rewards."
-      },
-      {
-        "name": "Network Stats",
-        "url": "https://app.stakingverse.io/network-stats",
-        "gridSize": [1, 2],
-        "description": "Live LUKSO validators, blocks and ecosystem health."
-      },
-      {
-        "name": "Token Swap",
-        "url": "https://app.stakingverse.io/swap",
-        "gridSize": [1, 1],
-        "description": "Swap between LYX and sLYX in a tap."
-      }
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "deliquified-roasted": {
-    "name": "Roasted: Roast Profiles",
-    "url": "https://roasted-green.vercel.app/",
-    "developer": "Deliquified Labs",
-    "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
-    "categories": [
-      "Social"
-    ],
-    "gridSize": [
-      1,
-      1
-    ],
-    "screenshots": 6,
-    "featured": false,
-    "addedAt": "2026-06-16"
-  },
-  "aratta-labs-draco": {
-    "name": "Dracos: Swipe & Mint",
-    "url": "https://thunder-dracos.vercel.app",
-    "developer": "Aratta Labs",
-    "publisher": "0x8A985fe01eA908F5697975332260553c454f8F77",
-    "categories": [
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 2,
-    "featured": false,
-    "addedAt": "2026-06-16"
-  },
-  "aratta-labs-pigmint": {
-    "name": "Pigmint: Mint Your Mood",
-    "url": "https://pigmint.vercel.app/",
-    "developer": "Aratta Labs",
-    "publisher": "0x544051588d6a0713e164196c16024fdcff877540",
-    "categories": [
-      "Social",
-      "NFTs"
-    ],
-    "gridSize": [
-      2,
-      2
-    ],
-    "screenshots": 3,
-    "featured": false,
-    "addedAt": "2026-06-16"
-  },
-  "deliquified-notes": {
-    "name": "Notes: Take Notes Privately",
-    "url": "https://mini-notes-livid.vercel.app/",
-    "developer": "Deliquified Labs",
-    "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
-    "categories": [
-      "Security",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      2,
-      2
-    ],
-    "screenshots": 2,
-    "featured": false,
-    "addedAt": "2026-06-16"
-  },
-  "universal-profiles-mobile": {
-    "name": "Universal Profiles Mobile: Your Web3 Identity",
-    "url": "https://my.universalprofile.cloud/apps",
-    "developer": "Universal Everything",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Infrastructure",
-      "Social",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "UP Mobile",
-      "Universal Profiles",
-      "Wallet"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "openclaw": {
-    "name": "OpenClaw: Authorize AI Agents",
-    "url": "https://openclaw.universalprofile.cloud/",
-    "sourceCode": "https://github.com/emmet-bot/openclaw-universalprofile-skill",
-    "developer": "LUKSO Agent",
-    "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
-    "categories": [
-      "AI",
-      "Security",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "OpenClaw",
-      "AI Agents",
-      "Controller"
-    ],
-    "addedAt": "2026-06-18"
-  },
-  "universal-profile-authorize": {
-    "name": "UP Authorize: Add Controllers",
-    "url": "https://authorize.universalprofile.cloud/",
-    "developer": "LUKSO Agent",
-    "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
-    "categories": [
-      "Security",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Universal Profile",
-      "Authorize",
-      "Controller"
-    ],
-    "addedAt": "2026-06-18"
-  },
-  "agent-token-claimer": {
-    "name": "Token Claimer: Create LUKSO Drops",
-    "url": "https://agent-token-claimer.vercel.app/",
-    "sourceCode": "https://github.com/JordyDutch/Token-Claimer",
-    "developer": "JordyDutch & LUKSO Agent",
-    "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
-    "categories": [
-      "DeFi",
-      "NFTs",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Token Claimer",
-      "Drops",
-      "LSP7",
-      "LSP8",
-      "Airdrops"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "lsp-asset-mover": {
-    "name": "LSP Asset Mover: Transfer Assets",
-    "url": "https://lsp-asset-mover.vercel.app/",
-    "sourceCode": "https://github.com/JordyDutch/LSP-Asset-Mover",
-    "developer": "JordyDutch & LUKSO Agent",
-    "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
-    "categories": [
-      "Security",
-      "Infrastructure",
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "LSP7",
-      "LSP8",
-      "Assets",
-      "Migration",
-      "Universal Profile"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "universal-everything": {
-    "name": "Universal Everything: Explore Profiles",
-    "url": "https://universaleverything.io/",
-    "sourceCode": "https://github.com/lukso-network/universalprofile.cloud",
-    "developer": "Universal Everything",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Social",
-      "Infrastructure",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Profiles",
-      "Assets",
-      "Explorer"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "universal-page": {
-    "name": "Universal Page: NFTs 2.0 Marketplace",
-    "url": "https://universal.page/feed",
-    "developer": "Universal Page",
-    "publisher": "0x00311eea40ef2687dc1049e5b6261481126fb9f3",
-    "categories": [
-      "NFTs",
-      "Marketplaces"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Marketplace",
-      "Collectibles",
-      "NFTs"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "phlox": {
-    "name": "Phlox: Trade on LUKSO",
-    "url": "https://phlox.social",
-    "developer": "Phlox",
-    "publisher": "0xa49c3e8f135307eee2ac4dd813972ce7d4ead418",
-    "categories": [
-      "DeFi",
-      "Exchanges"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Swap",
-      "Liquidity",
-      "DeFi"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "phlame-garden": {
-    "name": "PHLAME Protocol: Onchain Reputation",
-    "url": "https://phlame-protocol-v1.vercel.app/garden.html",
-    "developer": "Phlox",
-    "publisher": "0xa49c3e8f135307eee2ac4dd813972ce7d4ead418",
-    "categories": [
-      "Social",
-      "Community",
-      "DeFi"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "PHLAME",
-      "Reputation",
-      "Garden",
-      "Leaderboard"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "potato-tipper": {
-    "name": "POTATO Tipper: Tip New Followers",
-    "url": "https://potatotipper.app",
-    "developer": "Jean Cavallera",
-    "publisher": "0x5eed04004c2D46C12Fe30C639A90AD5d6F5D573d",
-    "categories": [
-      "Social",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "POTATO",
-      "Followers",
-      "Tipping"
-    ],
-    "addedAt": "2026-06-18"
-  },
-  "profile-jump": {
-    "name": "Profile Jump: Discover Universal Profiles",
-    "url": "https://profilejump.com/",
-    "developer": "Profile Jump",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Social",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Discovery",
-      "Analytics",
-      "Profiles"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "airdropper": {
-    "name": "Airdropper: Drop Tokens and Collectibles",
-    "url": "https://airdropper.universaleverything.io/",
-    "developer": "Universal Everything",
-    "publisher": "0xed64cb1062990e7fc2433443584a60989c0ae75d",
-    "categories": [
-      "Community",
-      "Infrastructure",
-      "DeFi",
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Airdrops",
-      "Tokens",
-      "Collectibles"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "proof-of-presence": {
-    "name": "Proof of Presence: Event Credentials",
-    "url": "https://pop.universaleverything.io/",
-    "developer": "Universal Everything",
-    "publisher": "0x700a452919208d57fdc886af56d23c9ce548d0c4",
-    "categories": [
-      "Community",
-      "NFTs",
-      "Social"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Events",
-      "Credentials",
-      "Attendance"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "nexus-hyperlane-bridge": {
-    "name": "Nexus Bridge: Bridge LYX",
-    "url": "https://nexus.hyperlane.xyz/?origin=lukso&destination=ethereum&destinationToken=LYX&originToken=LYX",
-    "developer": "Hyperlane",
-    "publisher": "0x177bf7d2f499743502604dbf3d42d837b10dc50c",
-    "categories": [
-      "Infrastructure",
-      "DeFi"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Bridge",
-      "LYX",
-      "Ethereum"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "forever-moments": {
-    "name": "Forever Moments: Preserve Memories",
-    "url": "https://www.forevermoments.life/moments",
-    "developer": "Forever Moments",
-    "publisher": "0x7de347be3ebaed43065182fcaba462796d6f2a83",
-    "categories": [
-      "Social",
-      "Art",
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Moments",
-      "Memories",
-      "Collections"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "hup": {
-    "name": "Hup: Onchain Social Network",
-    "url": "https://www.hup.social/",
-    "developer": "Hup",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Social",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Social",
-      "Posts",
-      "Onchain"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "common-ground": {
-    "name": "Common Ground: Community Coordination",
-    "url": "https://app.cg/c/LUKSO",
-    "sourceCode": "https://github.com/Common-Ground-DAO/commonground",
-    "developer": "Common Ground",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Community",
-      "DAOs",
-      "Social"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Community",
-      "Coordination",
-      "Events"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "gallery-marketplace": {
-    "name": "3D Marketplace: Grid Gallery",
-    "url": "https://universaleverything.io/0xAE493C002dA6afaa239F68931A438183DE01b0c1?assetGroup=grid",
-    "developer": "Universal Everything",
-    "publisher": "0xAE493C002dA6afaa239F68931A438183DE01b0c1",
-    "categories": [
-      "Marketplaces",
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "3D",
-      "Marketplace",
-      "Grid",
-      "Universal Page"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "day-glimpse": {
-    "name": "Day Glimpse: Share Grid Moments",
-    "url": "https://universaleverything.io/0xd34cd7127b5fa1522f9739a1b575f60821f5bc31",
-    "developer": "Day Glimpse",
-    "publisher": "0xd34cd7127b5fa1522f9739a1b575f60821f5bc31",
-    "categories": [
-      "Social",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Day Glimpse",
-      "Grid",
-      "Moments",
-      "Mini App"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "follower-tracker": {
-    "name": "FollowerTracker: Analyze UP Connections",
-    "url": "https://profile.link/followertracker@F160",
-    "developer": "FollowerTracker",
-    "publisher": "0xf160ee4e7d25f8a15d981848c9643289d25ed9fd",
-    "categories": [
-      "Social",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Followers",
-      "Universal Profile",
-      "Social Graph",
-      "Analytics"
-    ],
-    "addedAt": "2026-06-19"
-  },
-  "universal-everything-create-asset": {
-    "name": "Token Creator",
-    "url": "https://universaleverything.io/create-asset",
-    "developer": "Universal Everything",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Infrastructure",
-      "DeFi"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Token Creator",
-      "LSP7",
-      "Assets"
-    ],
-    "addedAt": "2026-06-17"
-  },
-  "team-finance-lukso-tools": {
-    "name": "Team Finance: LUKSO Token Tools",
-    "url": "https://app.team.finance/token-creation?ref=blog.team.finance",
-    "developer": "Team Finance",
-    "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
-    "categories": [
-      "Infrastructure",
-      "DeFi"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "featured": true,
-    "tags": [
-      "Token Creator",
-      "Vesting",
-      "Locks",
-      "Multisender"
-    ],
-    "addedAt": "2026-06-16"
-  },
-  "groov": {
-    "name": "Groov: Collect Music Onchain",
-    "url": "https://www.groovonchain.com/",
-    "developer": "Groov",
-    "publisher": "0x7a66Aa55002B34FAECEcF1977D34646690d3c330",
-    "categories": [
-      "Music",
-      "NFTs"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Music",
-      "Collectibles",
-      "Fanzones"
-    ],
-    "addedAt": "2026-06-17"
-  },
-  "permission-control": {
-    "name": "Permission Control: Manage UP Controllers",
-    "url": "https://permissioncontrol.app/",
-    "developer": "Permission Control",
-    "publisher": "0x65Cb19C9c7b5A6695C48936Cf8917CF34438D7D3",
-    "categories": [
-      "Security",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Controllers",
-      "Permissions",
-      "Universal Profiles"
-    ],
-    "addedAt": "2026-06-17"
-  },
-  "universal-grave": {
-    "name": "Universal Grave",
-    "url": "https://universalgrave.com/lukso",
-    "developer": "GRAVE",
-    "publisher": "0xec1c59E78De6f840A66b6EE8E4066700Be863529",
-    "categories": [
-      "Security",
-      "Infrastructure"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Grave",
-      "Digital Assets",
-      "Spam"
-    ],
-    "addedAt": "2026-06-17"
-  },
-  "up-assistants": {
-    "name": "UP Assistants",
-    "url": "https://upassistants.com/",
-    "developer": "UP Assistants",
-    "publisher": "0xec1c59E78De6f840A66b6EE8E4066700Be863529",
-    "categories": [
-      "AI",
-      "Infrastructure",
-      "Community"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Assistants",
-      "Catalog",
-      "AI"
-    ],
-    "addedAt": "2026-06-17"
-  },
-  "tipper": {
-    "name": "LUKSO Tipper: Send a Tip with a Note",
-    "url": "https://tipper.lukso.tools",
-    "developer": "tipper-app",
-    "publisher": "0x378Be8577ede94b9d4b9F45447F21B826501bab8",
-    "categories": [
-      "Social",
-      "Community",
-      "DeFi"
-    ],
-    "gridSize": [
-      1,
-      2
-    ],
-    "screenshots": 1,
-    "tags": [
-      "Tipping",
-      "LYX",
-      "USDC",
-      "LSP7",
-      "Universal Profile"
-    ],
-    "addedAt": "2026-07-04"
-  }
+  "name": "FullSend",
+  "url": "https://fullsend.live",
+  "developer": "Metaheads Studios",
+  "publisher": "0x29d7c7e4571a83b3ef5c867f75c81d736a9d58aa",
+  "categories": ["Social", "Community"],
+  "gridSize": [1, 2],
+  "screenshots": 6,
+  "tags": ["tipping", "creators", "live streams", "polls", "LYX", "OBS overlay"],
+  "featured": false,
+  "addedAt": "2026-06-25"
+},
+"defolio-multisend": {
+  "name": "Multisend: Send Tokens & NFTs",
+  "url": "https://multisend-alpha.vercel.app/",
+  "sourceCode": "https://github.com/deliquified/multisend",
+  "developer": "Deliquified Labs",
+  "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
+  "categories": [
+    "DeFi",
+    "NFTs",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 5,
+  "featured": false,
+  "addedAt": "2026-06-16"
+},
+"stakingverse-staking": {
+  "name": "Stakingverse: Stake Your LYX",
+  "url": "https://app.stakingverse.io/",
+  "developer": "Stakingverse",
+  "publisher": "0x900Be67854A47282211844BbdF5Cc0f332620513",
+  "categories": [
+    "DeFi",
+    "Staking"
+  ],
+  "gridSize": [
+    1,
+    1
+  ],
+  "screenshots": 2,
+  "featured": true,
+  "widgets": [
+    {
+      "name": "Liquid Staking",
+      "url": "https://app.stakingverse.io/liquid",
+      "gridSize": [1, 1],
+      "description": "Mint sLYX and earn auto-compounding staking rewards."
+    },
+    {
+      "name": "Network Stats",
+      "url": "https://app.stakingverse.io/network-stats",
+      "gridSize": [1, 2],
+      "description": "Live LUKSO validators, blocks and ecosystem health."
+    },
+    {
+      "name": "Token Swap",
+      "url": "https://app.stakingverse.io/swap",
+      "gridSize": [1, 1],
+      "description": "Swap between LYX and sLYX in a tap."
+    }
+  ],
+  "addedAt": "2026-06-16"
+},
+"deliquified-roasted": {
+  "name": "Roasted: Roast Profiles",
+  "url": "https://roasted-green.vercel.app/",
+  "developer": "Deliquified Labs",
+  "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
+  "categories": [
+    "Social"
+  ],
+  "gridSize": [
+    1,
+    1
+  ],
+  "screenshots": 6,
+  "featured": false,
+  "addedAt": "2026-06-16"
+},
+"aratta-labs-draco": {
+  "name": "Dracos: Swipe & Mint",
+  "url": "https://thunder-dracos.vercel.app",
+  "developer": "Aratta Labs",
+  "publisher": "0x8A985fe01eA908F5697975332260553c454f8F77",
+  "categories": [
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 2,
+  "featured": false,
+  "addedAt": "2026-06-16"
+},
+"aratta-labs-pigmint": {
+  "name": "Pigmint: Mint Your Mood",
+  "url": "https://pigmint.vercel.app/",
+  "developer": "Aratta Labs",
+  "publisher": "0x544051588d6a0713e164196c16024fdcff877540",
+  "categories": [
+    "Social",
+    "NFTs"
+  ],
+  "gridSize": [
+    2,
+    2
+  ],
+  "screenshots": 3,
+  "featured": false,
+  "addedAt": "2026-06-16"
+},
+"deliquified-notes": {
+  "name": "Notes: Take Notes Privately",
+  "url": "https://mini-notes-livid.vercel.app/",
+  "developer": "Deliquified Labs",
+  "publisher": "0x746a88d4bc09562e3f01bf4bd0ec91233f67e0d5",
+  "categories": [
+    "Security",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    2,
+    2
+  ],
+  "screenshots": 2,
+  "featured": false,
+  "addedAt": "2026-06-16"
+},
+"universal-profiles-mobile": {
+  "name": "Universal Profiles Mobile: Your Web3 Identity",
+  "url": "https://my.universalprofile.cloud/apps",
+  "developer": "Universal Everything",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Infrastructure",
+    "Social",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "UP Mobile",
+    "Universal Profiles",
+    "Wallet"
+  ],
+  "addedAt": "2026-06-16"
+},
+"openclaw": {
+  "name": "OpenClaw: Authorize AI Agents",
+  "url": "https://openclaw.universalprofile.cloud/",
+  "sourceCode": "https://github.com/emmet-bot/openclaw-universalprofile-skill",
+  "developer": "LUKSO Agent",
+  "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
+  "categories": [
+    "AI",
+    "Security",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "OpenClaw",
+    "AI Agents",
+    "Controller"
+  ],
+  "addedAt": "2026-06-18"
+},
+"universal-profile-authorize": {
+  "name": "UP Authorize: Add Controllers",
+  "url": "https://authorize.universalprofile.cloud/",
+  "developer": "LUKSO Agent",
+  "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
+  "categories": [
+    "Security",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Universal Profile",
+    "Authorize",
+    "Controller"
+  ],
+  "addedAt": "2026-06-18"
+},
+"agent-token-claimer": {
+  "name": "Token Claimer: Create LUKSO Drops",
+  "url": "https://agent-token-claimer.vercel.app/",
+  "sourceCode": "https://github.com/JordyDutch/Token-Claimer",
+  "developer": "JordyDutch & LUKSO Agent",
+  "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
+  "categories": [
+    "DeFi",
+    "NFTs",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Token Claimer",
+    "Drops",
+    "LSP7",
+    "LSP8",
+    "Airdrops"
+  ],
+  "addedAt": "2026-06-19"
+},
+"lsp-asset-mover": {
+  "name": "LSP Asset Mover: Transfer Assets",
+  "url": "https://lsp-asset-mover.vercel.app/",
+  "sourceCode": "https://github.com/JordyDutch/LSP-Asset-Mover",
+  "developer": "JordyDutch & LUKSO Agent",
+  "publisher": "0x293E96ebbf264ed7715cff2b67850517De70232a",
+  "categories": [
+    "Security",
+    "Infrastructure",
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "LSP7",
+    "LSP8",
+    "Assets",
+    "Migration",
+    "Universal Profile"
+  ],
+  "addedAt": "2026-06-19"
+},
+"universal-everything": {
+  "name": "Universal Everything: Explore Profiles",
+  "url": "https://universaleverything.io/",
+  "sourceCode": "https://github.com/lukso-network/universalprofile.cloud",
+  "developer": "Universal Everything",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Social",
+    "Infrastructure",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Profiles",
+    "Assets",
+    "Explorer"
+  ],
+  "addedAt": "2026-06-16"
+},
+"universal-page": {
+  "name": "Universal Page: NFTs 2.0 Marketplace",
+  "url": "https://universal.page/feed",
+  "developer": "Universal Page",
+  "publisher": "0x00311eea40ef2687dc1049e5b6261481126fb9f3",
+  "categories": [
+    "NFTs",
+    "Marketplaces"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Marketplace",
+    "Collectibles",
+    "NFTs"
+  ],
+  "addedAt": "2026-06-16"
+},
+"phlox": {
+  "name": "Phlox: Trade on LUKSO",
+  "url": "https://phlox.social",
+  "developer": "Phlox",
+  "publisher": "0xa49c3e8f135307eee2ac4dd813972ce7d4ead418",
+  "categories": [
+    "DeFi",
+    "Exchanges"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Swap",
+    "Liquidity",
+    "DeFi"
+  ],
+  "addedAt": "2026-06-16"
+},
+"phlame-garden": {
+  "name": "PHLAME Protocol: Onchain Reputation",
+  "url": "https://phlame-protocol-v1.vercel.app/garden.html",
+  "developer": "Phlox",
+  "publisher": "0xa49c3e8f135307eee2ac4dd813972ce7d4ead418",
+  "categories": [
+    "Social",
+    "Community",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "PHLAME",
+    "Reputation",
+    "Garden",
+    "Leaderboard"
+  ],
+  "addedAt": "2026-06-19"
+},
+"potato-tipper": {
+  "name": "POTATO Tipper: Tip New Followers",
+  "url": "https://potatotipper.app",
+  "developer": "Jean Cavallera",
+  "publisher": "0x5eed04004c2D46C12Fe30C639A90AD5d6F5D573d",
+  "categories": [
+    "Social",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "POTATO",
+    "Followers",
+    "Tipping"
+  ],
+  "addedAt": "2026-06-18"
+},
+"profile-jump": {
+  "name": "Profile Jump: Discover Universal Profiles",
+  "url": "https://profilejump.com/",
+  "developer": "Profile Jump",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Social",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Discovery",
+    "Analytics",
+    "Profiles"
+  ],
+  "addedAt": "2026-06-16"
+},
+"airdropper": {
+  "name": "Airdropper: Drop Tokens and Collectibles",
+  "url": "https://airdropper.universaleverything.io/",
+  "developer": "Universal Everything",
+  "publisher": "0xed64cb1062990e7fc2433443584a60989c0ae75d",
+  "categories": [
+    "Community",
+    "Infrastructure",
+    "DeFi",
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Airdrops",
+    "Tokens",
+    "Collectibles"
+  ],
+  "addedAt": "2026-06-16"
+},
+"proof-of-presence": {
+  "name": "Proof of Presence: Event Credentials",
+  "url": "https://pop.universaleverything.io/",
+  "developer": "Universal Everything",
+  "publisher": "0x700a452919208d57fdc886af56d23c9ce548d0c4",
+  "categories": [
+    "Community",
+    "NFTs",
+    "Social"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Events",
+    "Credentials",
+    "Attendance"
+  ],
+  "addedAt": "2026-06-16"
+},
+"nexus-hyperlane-bridge": {
+  "name": "Nexus Bridge: Bridge LYX",
+  "url": "https://nexus.hyperlane.xyz/?origin=lukso&destination=ethereum&destinationToken=LYX&originToken=LYX",
+  "developer": "Hyperlane",
+  "publisher": "0x177bf7d2f499743502604dbf3d42d837b10dc50c",
+  "categories": [
+    "Infrastructure",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Bridge",
+    "LYX",
+    "Ethereum"
+  ],
+  "addedAt": "2026-06-16"
+},
+"forever-moments": {
+  "name": "Forever Moments: Preserve Memories",
+  "url": "https://www.forevermoments.life/moments",
+  "developer": "Forever Moments",
+  "publisher": "0x7de347be3ebaed43065182fcaba462796d6f2a83",
+  "categories": [
+    "Social",
+    "Art",
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Moments",
+    "Memories",
+    "Collections"
+  ],
+  "addedAt": "2026-06-16"
+},
+"hup": {
+  "name": "Hup: Onchain Social Network",
+  "url": "https://www.hup.social/",
+  "developer": "Hup",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Social",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Social",
+    "Posts",
+    "Onchain"
+  ],
+  "addedAt": "2026-06-16"
+},
+"common-ground": {
+  "name": "Common Ground: Community Coordination",
+  "url": "https://app.cg/c/LUKSO",
+  "sourceCode": "https://github.com/Common-Ground-DAO/commonground",
+  "developer": "Common Ground",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Community",
+    "DAOs",
+    "Social"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Community",
+    "Coordination",
+    "Events"
+  ],
+  "addedAt": "2026-06-16"
+},
+"gallery-marketplace": {
+  "name": "3D Marketplace: Grid Gallery",
+  "url": "https://universaleverything.io/0xAE493C002dA6afaa239F68931A438183DE01b0c1?assetGroup=grid",
+  "developer": "Universal Everything",
+  "publisher": "0xAE493C002dA6afaa239F68931A438183DE01b0c1",
+  "categories": [
+    "Marketplaces",
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "3D",
+    "Marketplace",
+    "Grid",
+    "Universal Page"
+  ],
+  "addedAt": "2026-06-19"
+},
+"day-glimpse": {
+  "name": "Day Glimpse: Share Grid Moments",
+  "url": "https://universaleverything.io/0xd34cd7127b5fa1522f9739a1b575f60821f5bc31",
+  "developer": "Day Glimpse",
+  "publisher": "0xd34cd7127b5fa1522f9739a1b575f60821f5bc31",
+  "categories": [
+    "Social",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Day Glimpse",
+    "Grid",
+    "Moments",
+    "Mini App"
+  ],
+  "addedAt": "2026-06-19"
+},
+"follower-tracker": {
+  "name": "FollowerTracker: Analyze UP Connections",
+  "url": "https://profile.link/followertracker@F160",
+  "developer": "FollowerTracker",
+  "publisher": "0xf160ee4e7d25f8a15d981848c9643289d25ed9fd",
+  "categories": [
+    "Social",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Followers",
+    "Universal Profile",
+    "Social Graph",
+    "Analytics"
+  ],
+  "addedAt": "2026-06-19"
+},
+"universal-everything-create-asset": {
+  "name": "Token Creator",
+  "url": "https://universaleverything.io/create-asset",
+  "developer": "Universal Everything",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Infrastructure",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Token Creator",
+    "LSP7",
+    "Assets"
+  ],
+  "addedAt": "2026-06-17"
+},
+"team-finance-lukso-tools": {
+  "name": "Team Finance: LUKSO Token Tools",
+  "url": "https://app.team.finance/token-creation?ref=blog.team.finance",
+  "developer": "Team Finance",
+  "publisher": "0x0aa3dfcd57fad43e4fad2577fe7dde9395a0098e",
+  "categories": [
+    "Infrastructure",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "featured": true,
+  "tags": [
+    "Token Creator",
+    "Vesting",
+    "Locks",
+    "Multisender"
+  ],
+  "addedAt": "2026-06-16"
+},
+"groov": {
+  "name": "Groov: Collect Music Onchain",
+  "url": "https://www.groovonchain.com/",
+  "developer": "Groov",
+  "publisher": "0x7a66Aa55002B34FAECEcF1977D34646690d3c330",
+  "categories": [
+    "Music",
+    "NFTs"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Music",
+    "Collectibles",
+    "Fanzones"
+  ],
+  "addedAt": "2026-06-17"
+},
+"permission-control": {
+  "name": "Permission Control: Manage UP Controllers",
+  "url": "https://permissioncontrol.app/",
+  "developer": "Permission Control",
+  "publisher": "0x65Cb19C9c7b5A6695C48936Cf8917CF34438D7D3",
+  "categories": [
+    "Security",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Controllers",
+    "Permissions",
+    "Universal Profiles"
+  ],
+  "addedAt": "2026-06-17"
+},
+"universal-grave": {
+  "name": "Universal Grave",
+  "url": "https://universalgrave.com/lukso",
+  "developer": "GRAVE",
+  "publisher": "0xec1c59E78De6f840A66b6EE8E4066700Be863529",
+  "categories": [
+    "Security",
+    "Infrastructure"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Grave",
+    "Digital Assets",
+    "Spam"
+  ],
+  "addedAt": "2026-06-17"
+},
+"up-assistants": {
+  "name": "UP Assistants",
+  "url": "https://upassistants.com/",
+  "developer": "UP Assistants",
+  "publisher": "0xec1c59E78De6f840A66b6EE8E4066700Be863529",
+  "categories": [
+    "AI",
+    "Infrastructure",
+    "Community"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Assistants",
+    "Catalog",
+    "AI"
+  ],
+  "addedAt": "2026-06-17"
+},
+"tipper": {
+  "name": "LUKSO Tipper: Send a Tip with a Note",
+  "url": "https://tipper.lukso.tools",
+  "developer": "tipper-app",
+  "publisher": "0xA3CE06D04C916ADd90789b3A1699eCC73A28a562",
+  "categories": [
+    "Social",
+    "Community",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Tipping",
+    "LYX",
+    "USDC",
+    "LSP7",
+    "Universal Profile"
+  ],
+  "addedAt": "2026-07-04"
+}
 }
