@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-import { Analytics } from "@vercel/analytics/next";
-
 import { Providers } from "./components/providers/providers";
 import { siteUrl } from "@/lib/site";
 import { buildUniversalProfilesItunesMeta } from "@/lib/universalProfilesApp";
@@ -147,7 +145,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${display.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
-        <Analytics />
       </body>
     </html>
   );
