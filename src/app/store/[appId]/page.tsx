@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 import StoreDirectoryExperience from "@/components/StoreDirectoryExperience";
 import { apps } from "@/data/appCatalog";
 import { serializeApp } from "@/lib/catalog";
+import { siteUrl } from "@/lib/site";
 import { buildUniversalProfilesItunesMeta } from "@/lib/universalProfilesApp";
+
+export const dynamic = "force-static";
 
 interface StoreAppPageProps {
   params: Promise<{
@@ -29,6 +32,9 @@ export async function generateMetadata({
   if (!app) {
     return {
       title: "App not found | LUKSO UP! Store",
+      alternates: {
+        canonical: "/store",
+      },
       itunes: buildUniversalProfilesItunesMeta(appPath),
     };
   }
@@ -43,11 +49,27 @@ export async function generateMetadata({
   return {
     title: `${app.app.name} | LUKSO UP! Store`,
     description: description || "Discover this app on the LUKSO UP! Store.",
+    alternates: {
+      canonical: appPath,
+    },
     itunes: buildUniversalProfilesItunesMeta(appPath),
     openGraph: {
       title: `${app.app.name} | LUKSO UP! Store`,
       description: description || "Discover this app on the LUKSO UP! Store.",
+      url: `${siteUrl}${appPath}`,
+      siteName: "LUKSO UP! Store",
+      type: "website",
       images: app.banner ? [app.banner] : app.icon ? [app.icon] : [],
+    },
+    twitter: {
+      card: app.banner || app.icon ? "summary_large_image" : "summary",
+      title: `${app.app.name} | LUKSO UP! Store`,
+      description: description || "Discover this app on the LUKSO UP! Store.",
+      images: app.banner ? [app.banner] : app.icon ? [app.icon] : [],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -65,18 +87,45 @@ export default async function StoreAppPage({ params }: StoreAppPageProps) {
   const data = serializeApp(app);
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: data.name,
-    description: data.description,
-    applicationCategory: data.categories[0] ?? "Mini-App",
-    operatingSystem: "LUKSO Universal Profile (Web)",
-    url: data.detailUrl,
-    installUrl: data.addToGridUrl,
-    ...(data.iconUrl ? { image: data.iconUrl } : {}),
-    author: { "@type": "Organization", name: data.developer },
-    isAccessibleForFree: true,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    ...(data.sourceCode ? { softwareHelp: data.sourceCode } : {}),
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Store",
+            item: `${siteUrl}/store`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: data.name,
+            item: data.detailUrl,
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: data.name,
+        description: data.description,
+        applicationCategory: data.categories[0] ?? "Mini-App",
+        operatingSystem: "LUKSO Universal Profile (Web)",
+        url: data.detailUrl,
+        installUrl: data.addToGridUrl,
+        ...(data.iconUrl ? { image: data.iconUrl } : {}),
+        author: { "@type": "Organization", name: data.developer },
+        isAccessibleForFree: true,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        ...(data.sourceCode ? { softwareHelp: data.sourceCode } : {}),
+      },
+    ],
   };
 
   return (

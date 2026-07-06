@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ import { apps, type App } from "@/data/appCatalog";
 
 interface StoreDirectoryExperienceProps {
   initialAppId?: string;
+  children?: ReactNode;
 }
 
 const getAppById = (appId?: string) => {
@@ -23,9 +25,14 @@ const getAppById = (appId?: string) => {
   return apps[appId] ?? null;
 };
 
-export default function StoreDirectoryExperience({ initialAppId }: StoreDirectoryExperienceProps) {
+export default function StoreDirectoryExperience({
+  initialAppId,
+  children,
+}: StoreDirectoryExperienceProps) {
   const router = useRouter();
-  const [selectedApp, setSelectedApp] = useState<App | null>(() => getAppById(initialAppId));
+  const [selectedApp, setSelectedApp] = useState<App | null>(() =>
+    getAppById(initialAppId),
+  );
 
   useEffect(() => {
     setSelectedApp(getAppById(initialAppId));
@@ -52,6 +59,11 @@ export default function StoreDirectoryExperience({ initialAppId }: StoreDirector
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <StoreNavbar />
+      {children ? (
+        <div className="mx-auto w-full max-w-[1200px] px-4 pt-6 md:px-6">
+          {children}
+        </div>
+      ) : null}
       <div className="flex-1">
         <SearchPage onAppClick={handleAppClick} />
       </div>

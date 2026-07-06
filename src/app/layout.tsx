@@ -43,8 +43,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
   publisher: siteName,
-  // Default social-share image is the UP! Store wordmark; per-app pages override
-  // title/description/images in their generateMetadata.
   openGraph: {
     type: "website",
     siteName,
@@ -109,14 +107,14 @@ const siteJsonLd = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      name: "LUKSO UP! Store",
+      name: siteName,
       url: siteUrl,
       logo: `${siteUrl}/brand/upstore-wordmark.webp`,
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
-      name: "LUKSO UP! Store",
+      name: siteName,
       description:
         "Discover Mini-Apps for your LUKSO Universal Profile. Open any app, or add it to your Universal Profile Grid.",
       url: siteUrl,

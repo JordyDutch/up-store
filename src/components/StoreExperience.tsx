@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,6 +26,7 @@ export interface StoreExperienceProps {
    * Context (grid vs standalone) is still detected at runtime via useUpProvider.
    */
   variant?: "auto" | "standalone";
+  children?: ReactNode;
 }
 
 const TABS: { id: Tab; label: string; icon: typeof Compass }[] = [
@@ -33,7 +35,10 @@ const TABS: { id: Tab; label: string; icon: typeof Compass }[] = [
 
 const STORE_LINK = { href: "/store", label: "Search" };
 
-export default function StoreExperience({ variant = "auto" }: StoreExperienceProps) {
+export default function StoreExperience({
+  variant = "auto",
+  children,
+}: StoreExperienceProps) {
   const router = useRouter();
   const prefersReducedMotion = useReducedMotion();
 
@@ -88,7 +93,7 @@ export default function StoreExperience({ variant = "auto" }: StoreExperiencePro
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-glow-ambient",
-          !prefersReducedMotion && "animate-glow-drift"
+          !prefersReducedMotion && "animate-glow-drift",
         )}
       />
 
@@ -96,7 +101,7 @@ export default function StoreExperience({ variant = "auto" }: StoreExperiencePro
       <header
         className={cn(
           "glass-nav sticky top-0 z-30 pt-safe transition-shadow duration-200",
-          scrolled && "shadow-glass"
+          scrolled && "shadow-glass",
         )}
       >
         <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-4 md:h-16 md:px-6">
@@ -123,7 +128,7 @@ export default function StoreExperience({ variant = "auto" }: StoreExperiencePro
                       "relative inline-flex h-9 items-center px-3 text-sm font-medium transition-colors",
                       isActive
                         ? "text-brand-text"
-                        : "text-text-secondary hover:text-foreground"
+                        : "text-text-secondary hover:text-foreground",
                     )}
                   >
                     {t.label}
@@ -167,6 +172,7 @@ export default function StoreExperience({ variant = "auto" }: StoreExperiencePro
 
       {/* ---- Main content ---- */}
       <main className="relative z-10 flex-1">
+        {children ? <div className="mb-8">{children}</div> : null}
         <motion.div
           key={selectedApp ? "detail" : activeTab}
           initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}

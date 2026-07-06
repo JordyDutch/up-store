@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, changeFrequency: "daily", priority: 1 },
     { url: `${siteUrl}/store`, changeFrequency: "daily", priority: 0.9 },
-    { url: `${siteUrl}/search`, changeFrequency: "weekly", priority: 0.6 },
   ];
 
   const appRoutes: MetadataRoute.Sitemap = Object.values(apps)

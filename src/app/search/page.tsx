@@ -7,6 +7,8 @@ import {
   type MetadataSearchParams,
 } from "@/lib/universalProfilesApp";
 
+export const dynamic = "force-static";
+
 interface SearchPageProps {
   searchParams?: Promise<MetadataSearchParams>;
 }
@@ -19,9 +21,16 @@ export async function generateMetadata({
   return {
     title: "Search Apps | LUKSO UP! Store",
     description: "Search and browse all apps in the LUKSO UP! Store.",
+    alternates: {
+      canonical: "/store",
+    },
     itunes: buildUniversalProfilesItunesMeta(
       pathWithSearchParams("/search", resolvedSearchParams),
     ),
+    robots: {
+      index: false,
+      follow: true,
+    },
   };
 }
 
