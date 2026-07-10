@@ -745,5 +745,29 @@
     "Universal Profile"
   ],
   "addedAt": "2026-07-04"
+},
+"who-pays": {
+  "name": "Who Pays: Split Bills in USDC",
+  "url": "https://whopays.lukso.tools/",
+  "developer": "WhoPays",
+  "publisher": "0x378Be8577ede94b9d4b9F45447F21B826501bab8",
+  "categories": [
+    "Social",
+    "DeFi"
+  ],
+  "gridSize": [
+    1,
+    2
+  ],
+  "screenshots": 1,
+  "tags": [
+    "Bill Splitting",
+    "Payment Requests",
+    "USDC",
+    "Universal Profile",
+    "QR Code",
+    "Telegram"
+  ],
+  "addedAt": "2026-07-10"
 }
 }
