@@ -67,7 +67,7 @@ place**. Every new app must include:
   - `gridSize` — `[width, height]`
   - `screenshots` — integer that **equals** the number of `screenshot-N.png`
     files you added (a wrong count produces broken images)
-- **Optional but encouraged:** `sourceCode`, `tags`, and extra `widgets`.
+- **Optional but encouraged:** `description`, `sourceCode`, `tags`, and extra `widgets`.
 - **Valid JSON** (no trailing commas, no comments) that passes both
   verification commands below.
 
