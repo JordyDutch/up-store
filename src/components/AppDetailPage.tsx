@@ -272,7 +272,9 @@ export default function AppDetailPage({ app, onBack }: AppDetailPageProps) {
       ? publisherData.profileImages[0].url
       : app?.icon || "";
 
-  const description = publisherData?.description?.trim()
+  const description = app.description?.trim()
+    ? app.description
+    : publisherData?.description?.trim()
     ? publisherData.description
     : app.developer
     ? `${app.app.name} is built and maintained by ${app.developer}. Launch it to explore everything it offers inside your Universal Profile ecosystem.`
