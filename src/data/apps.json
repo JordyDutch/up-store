@@ -778,6 +778,7 @@
   "categories": ["Gaming", "NFTs"],
   "gridSize": [1, 1],
   "screenshots": 1,
+  "description": "Predict match outcomes across Serie A, Premier League, Bundesliga, La Liga, Ligue 1 and Eredivisie. Get it right and win an NFT that certifies your correct prediction, with the match details permanently recorded on-chain. Email-only access via magic link, sponsor-relay architecture — no user ever signs a transaction.",
   "sourceCode": "https://github.com/ChainIntegrate/match-predictor-v3",
   "addedAt": "2026-07-25"
 }
