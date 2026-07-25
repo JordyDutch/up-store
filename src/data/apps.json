@@ -769,5 +769,16 @@
     "Telegram"
   ],
   "addedAt": "2026-07-10"
+},
+  "matchpredictor": {
+  "name": "MatchPredictor",
+  "url": "https://playmatchpredictor.chainintegrate.it",
+  "developer": "ChainIntegrate",
+  "publisher": "0x4a2605796e0d91A9667d6E30365aEEC384C48c27",
+  "categories": ["Gaming", "NFTs"],
+  "gridSize": [1, 1],
+  "screenshots": 1,
+  "sourceCode": "https://github.com/ChainIntegrate/match-predictor-v3",
+  "addedAt": "2026-07-25"
 }
 }
