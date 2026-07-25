@@ -118,6 +118,7 @@ widgets (e.g. a stats panel, a swap box), list them under `widgets`:
 | `screenshots` | yes | Integer count of `screenshot-N.png` files you added |
 | `featured` | optional | Eligibility flag (default `false`) |
 | `sourceCode` | optional | "View source" link |
+| `description` | optional | Text shown in "About this app". Without it, that section falls back to the publisher UP's bio, then to an auto-generated sentence |
 | `tags` | optional | Extra search keywords (array of strings) |
 | `featuredTitle` | optional | If present, the app appears in the home **hero carousel** with this title |
 | `widgets` | optional | Extra addable Grid widgets — array of `{ name, url, gridSize: [w,h], description? }` (see section above) |
