@@ -114,7 +114,11 @@ function toApp(slug: string, entry: AppManifestEntry): App {
     icon: `${base}/logo.png`,
     banner: `${base}/banner.png`,
     developer: entry.developer,
-    description: entry.description,
+    // Normalizzata qui (non solo un valore-o-undefined grezzo): così sia il
+    // merge di famiglie di prodotto duplicate (che usa ??) sia la
+    // visualizzazione (che usa .trim()) vedono lo stesso identico stato
+    // "assente" per un valore vuoto o di soli spazi — nessun disallineamento.
+    description: entry.description?.trim() || undefined,
     tags: entry.tags,
     featured: entry.featured ?? false,
     featuredTitle: entry.featuredTitle,
