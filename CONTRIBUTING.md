@@ -43,7 +43,7 @@ Your app must include:
 - [ ] **Valid JSON** — no trailing commas, no comments — that passes both
       verification commands.
 
-Optional but encouraged: `sourceCode`, `tags`, and extra `widgets`.
+Optional but encouraged: `description`, `sourceCode`, `tags`, and extra `widgets`.
 
 The full field reference, image rules and valid category list live in
 **[docs/adding-apps.md](docs/adding-apps.md)** — read it before editing
