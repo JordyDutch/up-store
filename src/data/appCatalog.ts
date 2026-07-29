@@ -27,6 +27,7 @@ interface AppManifestEntry {
   categories: string[];
   gridSize: number[]; // [width, height]
   screenshots: number; // count of screenshot-N.png in public/apps/<slug>/
+  description?: string; // optional app-specific "About this app" text; overrides the publisher UP's bio when present
   sourceCode?: string;
   tags?: string[];
   featured?: boolean;
@@ -65,6 +66,7 @@ export interface App {
   icon?: string;
   banner?: string;
   developer?: string;
+  description?: string; // optional app-specific description; overrides the publisher UP's bio in "About this app" when present
   tags?: string[];
   featured?: boolean;
   featuredTitle?: string;
@@ -112,6 +114,11 @@ function toApp(slug: string, entry: AppManifestEntry): App {
     icon: `${base}/logo.png`,
     banner: `${base}/banner.png`,
     developer: entry.developer,
+    // Normalizzata qui (non solo un valore-o-undefined grezzo): così sia il
+    // merge di famiglie di prodotto duplicate (che usa ??) sia la
+    // visualizzazione (che usa .trim()) vedono lo stesso identico stato
+    // "assente" per un valore vuoto o di soli spazi — nessun disallineamento.
+    description: entry.description?.trim() || undefined,
     tags: entry.tags,
     featured: entry.featured ?? false,
     featuredTitle: entry.featuredTitle,
@@ -170,6 +177,7 @@ const mergeDuplicateApps = (canonical: App, duplicate: App): App => {
   return {
     ...canonical,
     categories: uniqueValues([...canonical.categories, ...duplicate.categories]),
+    description: canonical.description ?? duplicate.description,
     tags: uniqueValues([
       ...(canonical.tags ?? []),
       ...(duplicate.tags ?? []),
