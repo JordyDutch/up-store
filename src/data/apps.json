@@ -781,5 +781,17 @@
   "description": "Predict match outcomes across Serie A, Premier League, Bundesliga, La Liga, Ligue 1 and Eredivisie. Get it right and win an NFT that certifies your correct prediction, with the match details permanently recorded on-chain. Email-only access via magic link, sponsor-relay architecture — no user ever signs a transaction.",
   "sourceCode": "https://github.com/ChainIntegrate/match-predictor-v3",
   "addedAt": "2026-07-25"
+},
+"mycarbook": {
+  "name": "MyCarBook",
+  "url": "https://mycarbook.chainintegrate.it",
+  "developer": "ChainIntegrate",
+  "publisher": "0x4a2605796e0d91A9667d6E30365aEEC384C48c27",
+  "categories": ["NFTs", "Infrastructure"],
+  "gridSize": [1, 1],
+  "screenshots": 3,
+  "description": "On-chain vehicle maintenance logbook on LUKSO. Owners mint their own vehicle as an NFT and log service history — date, mileage, cost, category — directly from their Universal Profile. ChainIntegrate Membership tiers unlock vehicle photos, service categorization, and document attachments.",
+  "sourceCode": "https://github.com/ChainIntegrate/MyCarBook",
+  "addedAt": "2026-08-03"
 }
 }
