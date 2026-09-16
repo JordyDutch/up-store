@@ -793,5 +793,17 @@
   "description": "On-chain vehicle maintenance logbook on LUKSO. Owners mint their own vehicle as an NFT and log service history — date, mileage, cost, category — directly from their Universal Profile. ChainIntegrate Membership tiers unlock vehicle photos, service categorization, and document attachments.",
   "sourceCode": "https://github.com/ChainIntegrate/MyCarBook",
   "addedAt": "2026-08-03"
+},
+"supplier-trust-registry": {
+  "name": "Supplier Trust Registry",
+  "url": "https://supplier-trust-registry.chainintegrate.it",
+  "developer": "ChainIntegrate",
+  "publisher": "0x4a2605796e0d91A9667d6E30365aEEC384C48c27",
+  "categories": ["Infrastructure", "Security"],
+  "gridSize": [2, 1],
+  "screenshots": 7,
+  "description": "Mint your own on-chain Supplier Registry (soulbound LSP8) and manage supplier evaluations independently, with no shared database. Define custom evaluation criteria and a numeric scale per registry, then rate suppliers with visibility — public or private — decided evaluation by evaluation. Every evaluation is hashed on-chain; private content stays encrypted behind an IPFS pointer, decryptable only client-side with your own PIN. Corrections are appended, never overwritten, so the evaluation history stays intact. Higher membership tiers unlock selective disclosure: prove a specific evaluation to a third party without exposing the rest of the registry.",
+  "sourceCode": "https://github.com/ChainIntegrate/supplier-trust-registry",
+  "addedAt": "2026-09-16"
 }
 }
