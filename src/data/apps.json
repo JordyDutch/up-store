@@ -805,5 +805,18 @@
   "description": "Mint your own on-chain Supplier Registry (soulbound LSP8) and manage supplier evaluations independently, with no shared database. Define custom evaluation criteria and a numeric scale per registry, then rate suppliers with visibility — public or private — decided evaluation by evaluation. Every evaluation is hashed on-chain; private content stays encrypted behind an IPFS pointer, decryptable only client-side with your own PIN. Corrections are appended, never overwritten, so the evaluation history stays intact. Higher membership tiers unlock selective disclosure: prove a specific evaluation to a third party without exposing the rest of the registry.",
   "sourceCode": "https://github.com/ChainIntegrate/supplier-trust-registry",
   "addedAt": "2026-09-16"
+},
+  "burntpix": {
+  "name": "BurntPix: Mint and Refine Art",
+  "url": "https://burntpix.app/",
+  "developer": "Ferroresonance",
+  "publisher": "0xa5118f0524c14EF9BFB7CeEC73D5CBDC2838DFe0",
+  "categories": ["Art", "NFTs"],
+  "gridSize": [1, 2],
+  "screenshots": 1,
+  "description": "Find the picture hidden in a number, mint it on LUKSO, and refine it from your Universal Profile. Each BurntPix is a generative portrait you can keep improving.",
+  "sourceCode": "https://github.com/ferroresonance/burntpix-simplified",
+  "tags": ["BurntPix", "Generative art", "Mint", "Refine", "LUKSO", "LSP8"],
+  "addedAt": "2026-10-01"
 }
 }
