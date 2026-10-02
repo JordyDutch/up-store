@@ -815,7 +815,6 @@
   "gridSize": [1, 2],
   "screenshots": 1,
   "description": "Find the picture hidden in a number, mint it on LUKSO, and refine it from your Universal Profile. Each BurntPix is a generative portrait you can keep improving.",
-  "sourceCode": "https://github.com/ferroresonance/burntpix-simplified",
   "tags": ["BurntPix", "Generative art", "Mint", "Refine", "LUKSO", "LSP8"],
   "addedAt": "2026-10-01"
 }
