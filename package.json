@@ -55,6 +55,8 @@
     "typescript": "^5"
   },
   "overrides": {
-    "postcss": "^8.5.15"
+    "postcss": "^8.5.15",
+    "@base-org/account": "2.5.1",
+    "@coinbase/cdp-sdk": "1.51.2"
   }
 }
