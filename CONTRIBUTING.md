@@ -113,6 +113,18 @@ without most of them (tracking, Pinata and profile metadata degrade gracefully).
 - Keep accessibility intact (labels, `aria-*`, focus states) when touching UI.
 - Don't reformat or churn unrelated files in a feature PR.
 
+### Dependency overrides
+
+`package.json` pins `@base-org/account` to `2.5.1` to satisfy wagmi's optional
+peer while resolving Reown's conflicting `2.4.0` dependency. It also retains
+`@coinbase/cdp-sdk` at the previously locked `1.51.2`: newer versions can expose
+optional x402 imports that fail the Next.js build through UP Modal.
+
+Revisit these pins when the upstream Base version requirements agree and CDP's
+optional x402 imports build correctly. Validate replacements with a clean
+`npm ci`, `npx tsc --noEmit`, `npm run lint`, and `npm run build` before removing
+the overrides.
+
 ---
 
 ## Verification
