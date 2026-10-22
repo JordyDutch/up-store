@@ -71,7 +71,7 @@ safe to experiment.
 
 ### Prerequisites
 
-- Node.js 18.18+ (Next.js requirement)
+- Node.js 22.23.4 or a newer patched 22.x release
 - npm (this repo ships a `package-lock.json`; please don't switch package
   managers in a PR)
 
