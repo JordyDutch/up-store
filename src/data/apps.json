@@ -277,28 +277,6 @@
   ],
   "addedAt": "2026-06-16"
 },
-"universal-page": {
-  "name": "Universal Page: NFTs 2.0 Marketplace",
-  "url": "https://universal.page/feed",
-  "developer": "Universal Page",
-  "publisher": "0x00311eea40ef2687dc1049e5b6261481126fb9f3",
-  "categories": [
-    "NFTs",
-    "Marketplaces"
-  ],
-  "gridSize": [
-    1,
-    2
-  ],
-  "screenshots": 1,
-  "featured": true,
-  "tags": [
-    "Marketplace",
-    "Collectibles",
-    "NFTs"
-  ],
-  "addedAt": "2026-06-16"
-},
 "phlox": {
   "name": "Phlox: Trade on LUKSO",
   "url": "https://phlox.social",
